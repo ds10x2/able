@@ -4,6 +4,7 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 import torchvision.transforms
+from torch import Tensor
 from torch.utils.data.dataloader import DataLoader
 from torch.utils.data import random_split, Dataset, Subset
 from typing import Iterator, Any
@@ -350,25 +351,53 @@ def topological_sort(blocks: list[CanvasBlock], edges: list[Edge]) -> list[Canva
     return list(sorted_blocks)
 
 class UserModel(nn.Module):
-    def __init__(self, **kwargs):
+    def __init__(self, root_id:str, end_id:str, edges: list[Edge]):
         super(UserModel, self).__init__()
-        self.layers = nn.Sequential()
+        self.root_id = root_id
+        self.end_id = end_id
+        self.child_map = defaultdict(list)
 
-        for k, v in kwargs.items():
-            setattr(self, k, v)
+        for edge in edges:
+            self.child_map[edge.source].append(edge.target)
 
     def forward(self, x):
-        return self.layers(x)
+        layer_input: dict[str, Any] = {layer_id: 0 for layer_id, _ in self.named_children()}
+
+        q = deque()
+        q.append(self.root_id)
+        layer_input[self.root_id] = x
+
+        output = 0
+
+        while q:
+            module_id = q.popleft()
+
+            submodule = self.get_submodule(module_id)
+
+            output = submodule(layer_input[module_id])
+
+            del layer_input[module_id]
+
+            if module_id == self.end_id:
+                break
+
+            for child_id in self.child_map[module_id]:
+                layer_input[child_id] += output
+                q.append(child_id)
+
+        del layer_input
+
+        return output
 
 def convert_block_graph_to_model(blocks: list[CanvasBlock], edges: list[Edge]) -> nn.Module | None:
     sorted_blocks = topological_sort(blocks, edges)
 
-    model = UserModel()
+    model = UserModel(sorted_blocks[0].id, sorted_blocks[-1].id, edges)
 
     for block in sorted_blocks:
         module = convert_block_to_obj(block)
 
-        model.layers.add_module(block.id, module)
+        model.add_module(block.id, module)
 
     return model
 
