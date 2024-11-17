@@ -11,6 +11,7 @@ from torchvision import transforms
 from src.block.enums import BlockType, ArgType
 from src.block.schemas import Block
 from src.canvas.schemas import CanvasBlock
+from src.train.module import *
 
 logger = logging.getLogger(__name__)
 
@@ -43,7 +44,11 @@ MODULE_MAP = {
     "centercrop": transforms.CenterCrop,
     "basicblock": torchvision.models.resnet.BasicBlock,
     "bottleneck": torchvision.models.resnet.Bottleneck,
-    "adaptiveavgpool2d": nn.AdaptiveAvgPool2d
+    "adaptiveavgpool2d": nn.AdaptiveAvgPool2d,
+    "tensoradder": TensorAdder,
+    "tensorconcatenator": TensorConcatenator,
+    "tensorstacker": TensorStacker,
+    "tensormatrixmultiplier": TensorMatrixMultiplier
 }
 
 def dynamic_class_loader(module_path: str, class_name: str):

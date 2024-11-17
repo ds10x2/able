@@ -361,11 +361,11 @@ class UserModel(nn.Module):
             self.child_map[edge.source].append(edge.target)
 
     def forward(self, x):
-        layer_input: dict[str, Any] = {layer_id: 0 for layer_id, _ in self.named_children()}
+        layer_input: dict[str, list] = {layer_id: [] for layer_id, _ in self.named_children()}
 
         q = deque()
         q.append(self.root_id)
-        layer_input[self.root_id] = x
+        layer_input[self.root_id].append(x)
 
         output = 0
 
@@ -374,15 +374,14 @@ class UserModel(nn.Module):
 
             submodule = self.get_submodule(module_id)
 
-            output = submodule(layer_input[module_id])
-
-            del layer_input[module_id]
+            input_data = layer_input.pop(module_id)
+            output = submodule(*input_data)
 
             if module_id == self.end_id:
                 break
 
             for child_id in self.child_map[module_id]:
-                layer_input[child_id] += output
+                layer_input[child_id].append(output)
                 q.append(child_id)
 
         del layer_input
