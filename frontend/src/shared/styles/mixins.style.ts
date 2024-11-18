@@ -11,3 +11,9 @@ export const scrollbarHiddenMixin = css`
   scrollbar-width: none; /* Firefox에서 스크롤바 제거 */
   -ms-overflow-style: none; /* IE와 Edge에서 스크롤바 제거 */
 `;
+
+export const ellipsisMixin = css`
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+`;
