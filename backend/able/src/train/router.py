@@ -24,5 +24,6 @@ def get_train_result(project_name: str, train_result_name: str):
 
 @router.post("")
 async def train(request: TrainRequest, background_tasks: BackgroundTasks) -> Response:
-    background_tasks.add_task(train_in_background, request)
+    # background_tasks.add_task(train_in_background, request)
+    train_in_background(request)
     return accepted()
