@@ -33,6 +33,7 @@ docker run -d \
     -p 8088:8088 \
     -e TZ=Asia/Seoul \
     -e PYTHONPATH=/app \
+    --gpus all \
     ai-block-editor
 
 ```
@@ -46,6 +47,8 @@ docker run -d \
 `-e TZ=Asia/Seoul` : 시간대를 KST로 설정합니다.
 
 `-e PYTHONPATH=/app` : 파이썬 경로를 /app으로 설정합니다.
+
+`--gpus all` : 모든 GPU를 컨테이너에 할당합니다. 
 
 ### 추가 설정
 
