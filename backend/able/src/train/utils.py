@@ -351,47 +351,41 @@ def topological_sort(blocks: list[CanvasBlock], edges: list[Edge]) -> list[Canva
     return list(sorted_blocks)
 
 class UserModel(nn.Module):
-    def __init__(self, root_id:str, end_id:str, edges: list[Edge]):
+    def __init__(self, blocks: list[CanvasBlock], edges: list[Edge]):
         super(UserModel, self).__init__()
-        self.root_id = root_id
-        self.end_id = end_id
         self.child_map = defaultdict(list)
+        self.module_list = nn.ModuleList()
+        self.module_id_list = []
+
+        for block in blocks:
+            module = convert_block_to_obj(block)
+
+            self.module_list.add_module(block.id, module)
+            self.module_id_list.append(block.id)
 
         for edge in edges:
             self.child_map[edge.source].append(edge.target)
 
     def forward(self, x):
-        layer_input: dict[str, list] = {layer_id: [] for layer_id, _ in self.named_children()}
-
-        q = deque()
-        q.append(self.root_id)
-        layer_input[self.root_id].append(x)
+        layer_input: dict[str, list] = defaultdict(list)
+        layer_input[self.module_id_list[0]].append(x)
 
         output = 0
+        for module_id in self.module_id_list:
+            submodule = self.module_list.get_submodule(module_id)
+            in_data = layer_input[module_id]
 
-        while q:
-            module_id = q.popleft()
-
-            submodule = self.get_submodule(module_id)
-
-            input_data = layer_input.pop(module_id)
-            output = submodule(*input_data)
-
-            if module_id == self.end_id:
-                break
+            output = submodule(*in_data)
 
             for child_id in self.child_map[module_id]:
                 layer_input[child_id].append(output)
-                q.append(child_id)
-
-        del layer_input
 
         return output
 
 def convert_block_graph_to_model(blocks: list[CanvasBlock], edges: list[Edge]) -> nn.Module | None:
     sorted_blocks = topological_sort(blocks, edges)
 
-    model = UserModel(sorted_blocks[0].id, sorted_blocks[-1].id, edges)
+    model = UserModel(sorted_blocks, edges)
 
     for block in sorted_blocks:
         module = convert_block_to_obj(block)
@@ -545,3 +539,6 @@ def load_transform_pipeline(project_name: str, result_name:str) -> torchvision.t
 
     with open(transform_pipeline_path, 'rb') as f:
         return pickle.load(f)
+
+if __name__=="__main__":
+    print(torchvision.models.resnet18())

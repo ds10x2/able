@@ -11,7 +11,7 @@ from torchvision import transforms
 from src.block.enums import BlockType, ArgType
 from src.block.schemas import Block
 from src.canvas.schemas import CanvasBlock
-from src.train.module import *
+from src.module import TensorAdder, TensorConcatenator, TensorStacker, TensorMatrixMultiplier
 
 logger = logging.getLogger(__name__)
 
