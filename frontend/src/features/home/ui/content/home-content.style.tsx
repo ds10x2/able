@@ -57,6 +57,23 @@ export const CanvasImage = styled.img`
   cursor: pointer;
 `;
 
+export const CanvasEmpty = styled.div`
+  width: 100%;
+  height: 20.75rem;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+  background-color: ${Common.colors.background};
+`;
+
+export const CanvasText = styled.p`
+  font-size: ${Common.fontSizes.lg};
+  color: ${Common.colors.gray500};
+`;
+
 export const HistoryWrapper = styled.div`
   height: 100%;
   display: flex;

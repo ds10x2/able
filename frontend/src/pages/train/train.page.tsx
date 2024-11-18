@@ -4,7 +4,7 @@ import { useLocation } from 'react-router-dom';
 import { Container, Content, MainContainer } from '@pages/train/train.style';
 import { useProjectNameStore } from '@entities/project/model/project.model';
 
-import Sidebar from '@/widgets/sidebar/project-sidebar';
+import Sidebar from '@widgets/sidebar/project-sidebar';
 import AnalyzeComponent from '@features/train/ui/analyze/analyze';
 import ResultComponent from '@features/train/ui/result/result';
 import PageHeader from '@widgets/header/page-header';

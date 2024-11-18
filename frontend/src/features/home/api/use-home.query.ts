@@ -1,7 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
+
 import axiosInstance from '@shared/api/config/axios-instance';
 import homeKey from '@/features/home/api/home-key';
-import { HistoryResponse } from '@features/home/types/home.type';
+import type { HistoryResponse } from '@features/home/types/home.type';
 
 const fetchProjects = async () => {
   try {

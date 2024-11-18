@@ -1,6 +1,7 @@
-import { type LayoutAlgorithm, type Direction } from '@features/train/types/algorithm.type';
 import { type Node, getIncomers } from '@xyflow/react';
 import { type HierarchyPointNode, stratify, tree } from 'd3-hierarchy';
+
+import type { LayoutAlgorithm, Direction } from '@features/train/types/algorithm.type';
 
 const getPosition = (x: number, y: number, direction: Direction) => {
   switch (direction) {

@@ -64,7 +64,7 @@ export interface ClassScore {
   classScore: number;
 }
 
-export interface ImageStore {
+export interface ImageState {
   uploadedImage: string | null;
   heatmapImage: string | null;
   classScores: ClassScore[];

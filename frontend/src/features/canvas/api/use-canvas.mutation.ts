@@ -1,8 +1,8 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 import axiosInstance from '@shared/api/config/axios-instance';
-import type { BlockSchema, CanvasSchema, EdgeSchema } from '@features/canvas/types/canvas.type';
 import canvasKey from '@features/canvas/api/canvas-key';
+import type { BlockSchema, CanvasSchema, EdgeSchema } from '@features/canvas/types/canvas.type';
 
 interface SaveCanvasProps {
   projectName: string;

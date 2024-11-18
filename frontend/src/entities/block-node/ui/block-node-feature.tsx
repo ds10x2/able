@@ -92,32 +92,27 @@ const BlockNodeFeature = ({
         </S.FieldWrapper>
         <Handle type="source" position={sourcePosition} />
       </S.Container>
-      {data.block.id === heatMapId && heatmapImage &&
+      {data.block.id === heatMapId && heatmapImage && (
         <S.GraphContainer direction={currentDirection}>
           <S.Header>
             <S.Title>
               <GraphIcon width={21} height={21} />
               그래프 숨기기
             </S.Title>
-            <S.ToggleButton onClick={toggleGraphVisibility}>
-              {isGraphVisible ? '△' : '▼'}
-            </S.ToggleButton>
+            <S.ToggleButton onClick={toggleGraphVisibility}>{isGraphVisible ? '△' : '▼'}</S.ToggleButton>
           </S.Header>
           <S.BarContainer isVisible={isGraphVisible}>
             {classScores.map((score, index) => (
               <S.BarWrapper key={index}>
                 <S.BarLabel>{score.className}</S.BarLabel>
-                <S.Bar
-                  height={score.classScore}
-                  color={index === 0 ? '#00274d' : index === 1 ? '#5b8db8' : '#aac4e1'}
-                >
+                <S.Bar height={score.classScore} color={index === 0 ? '#00274d' : index === 1 ? '#5b8db8' : '#aac4e1'}>
                   <S.BarScore>{score.classScore}</S.BarScore>
                 </S.Bar>
               </S.BarWrapper>
             ))}
           </S.BarContainer>
         </S.GraphContainer>
-      }
+      )}
     </S.Wrapper>
   );
 };

@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
+
 import { LogContainer, LogText } from '@features/deploy/ui/server/log-viewer.style';
+
 import Spinner from '@/shared/ui/loading/spinner';
 
 const LogViewer = () => {

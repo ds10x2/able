@@ -1,4 +1,3 @@
-import { useEffect, useState, useCallback } from 'react';
 import {
   ReactFlow,
   MarkerType,
@@ -11,9 +10,9 @@ import {
   type Node as XYFlowNode,
 } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
+import { useEffect, useState, useCallback } from 'react';
 import toast from 'react-hot-toast';
 
-import BlockNodeFeature from '@entities/block-node/ui/block-node-feature';
 import useAutoLayout, { type LayoutOptions } from '@features/train/model/use-auto-layout.model';
 import { useHeatMap, useModel } from '@features/train/api/use-analyze.query';
 import { useProjectNameStore } from '@entities/project/model/project.model';
@@ -32,6 +31,7 @@ import {
 } from '@features/train/ui/analyze/canvas-result.style';
 import BasicButton from '@shared/ui/button/basic-button';
 import PlayIcon from '@icons/play.svg?react';
+import BlockNodeFeature from '@entities/block-node/ui/block-node-feature';
 import DeviceSelectModal from '@features/train/ui/modal/device-select-modal';
 
 const proOptions = {
@@ -140,12 +140,12 @@ const CanvasResult = () => {
         nds.map((node) =>
           node.id === nodeId
             ? {
-              ...node,
-              data: {
-                ...node.data,
-                featureMap: image,
-              },
-            }
+                ...node,
+                data: {
+                  ...node.data,
+                  featureMap: image,
+                },
+              }
             : node
         )
       );
@@ -198,15 +198,13 @@ const CanvasResult = () => {
     } else if (!heatMap) {
       resetImage();
     }
-  }, [heatMap, canvas]);
+  }, [canvas, setNodes, setEdges, setHeatMapId, handleFieldChange, heatMap, heatMapId, nodes, resetImage, setAllImage]);
 
   useEffect(() => {
     if (!defaultSetting) {
       fitView();
     }
   }, [fitView, direction, nodes, heatMap]);
-
-
 
   return (
     <>

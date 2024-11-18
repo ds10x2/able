@@ -3,11 +3,11 @@ import toast from 'react-hot-toast';
 
 import * as S from '@features/train/ui/result/result.style';
 import Common from '@shared/styles/common';
+import type { DeployConfig } from '@features/deploy/types/deploy.type';
+import type { EpochResult } from '@features/train/types/analyze.type';
 import { useGraphs } from '@features/train/api/use-result.query';
 import { useProjectNameStore } from '@entities/project/model/project.model';
-import type { DeployConfig } from '@features/deploy/types/deploy.type';
 import { useRegisterAPI } from '@features/deploy/api/use-api.mutation';
-import { EpochResult } from '@features/train/types/analyze.type';
 
 import EpochGraph from '@features/train/ui/result/epoch-graph';
 import F1Score from '@features/train/ui/result/f1-score';

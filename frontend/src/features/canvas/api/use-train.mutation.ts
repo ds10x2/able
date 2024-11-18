@@ -1,8 +1,8 @@
 import { useMutation } from '@tanstack/react-query';
+import toast from 'react-hot-toast';
 
 import axiosInstance from '@shared/api/config/axios-instance';
 import type { TrainRequest } from '@features/canvas/types/train.type';
-import toast from 'react-hot-toast';
 
 const startTrain = async (trainRequest: TrainRequest) => {
   await axiosInstance.post('/trains', trainRequest);

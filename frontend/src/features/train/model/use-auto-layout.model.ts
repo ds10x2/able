@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { type Node, type Edge, useReactFlow, useNodesInitialized, useStore } from '@xyflow/react';
 
-import { getSourceHandlePosition, getTargetHandlePosition } from '@/features/train/utils/auto-layout.util';
+import { getSourceHandlePosition, getTargetHandlePosition } from '@features/train/utils/auto-layout.util';
 import layoutAlgorithms from '@features/train/types/algorithm.type';
 
 export type LayoutOptions = {

@@ -2,8 +2,8 @@ import { AnalyzeState } from './../types/project.type';
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
 
-import { Project } from '@features/home/types/home.type';
-import { ProjectNameState, ProjectState } from '@entities/project/types/project.type';
+import type { Project } from '@features/home/types/home.type';
+import type { ProjectNameState, ProjectState } from '@entities/project/types/project.type';
 
 export const useProjectNameStore = create<ProjectNameState>()(
   persist(

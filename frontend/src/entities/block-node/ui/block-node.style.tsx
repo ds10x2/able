@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+
 import Common from '@shared/styles/common';
 
 export const Container = styled.div<{ blockColor: string; isConnected: boolean; isSelected: boolean }>`
@@ -153,7 +154,7 @@ export const ToggleButton = styled.button`
   border: none;
   font-size: 1rem;
   cursor: pointer;
-  padding: 1rem; 
+  padding: 1rem;
   margin: -1rem;
 `;
 
@@ -163,13 +164,13 @@ export const BarContainer = styled.div<{ isVisible: boolean }>`
   justify-content: space-between;
   align-items: flex-end;
   gap: 1rem;
-  max-height: ${(props) => (props.isVisible ? '31.25rem' : '0rem')}; 
-  overflow: hidden; 
-  transition: max-height 0.3s ease-in-out; 
+  max-height: ${(props) => (props.isVisible ? '31.25rem' : '0rem')};
+  overflow: hidden;
+  transition: max-height 0.3s ease-in-out;
 `;
 
 export const BarWrapper = styled.div`
-  flex: 1; 
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -180,7 +181,7 @@ export const BarWrapper = styled.div`
 
 export const Bar = styled.div<{ height: number; color: string }>`
   width: 3.4375rem;
-  height: ${(props) => 1.25 + (props.height) / 16}rem;
+  height: ${(props) => 1.25 + props.height / 16}rem;
   background-color: ${(props) => props.color};
   border-radius: 0.125rem;
   display: flex;
@@ -208,7 +209,7 @@ export const BarLabel = styled.span`
 export const Wrapper = styled.div`
   position: relative;
   display: flex;
-  flex-direction: row; 
-  align-items: flex-start; 
-  gap: 1rem; 
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 1rem;
 `;

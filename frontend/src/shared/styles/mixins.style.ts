@@ -12,6 +12,7 @@ export const scrollbarHiddenMixin = css`
   -ms-overflow-style: none; /* IE와 Edge에서 스크롤바 제거 */
 `;
 
+// 말줄임표
 export const ellipsisMixin = css`
   white-space: nowrap;
   overflow: hidden;

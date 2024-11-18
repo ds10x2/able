@@ -1,9 +1,9 @@
 import * as S from '@widgets/header/page-header.style';
+import { useNavigate } from 'react-router-dom';
 
 import Common from '@shared/styles/common';
 
 import ArrowButton from '@shared/ui/button/arrow-button';
-import { useNavigate } from 'react-router-dom';
 
 interface PageHeaderProps {
   title: string;

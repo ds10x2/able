@@ -22,7 +22,7 @@ pathManager = PathManager()
 def get_feature_map(request: FeatureMapRequest) -> str:
     feature_map_path = pathManager.get_feature_maps_path(request.project_name, request.result_name, request.epoch_name)
 
-    image_name = 'layers.' + request.block_id + ".jpg"
+    image_name = request.block_id + ".jpg"
     image_data = None
     try:
         image_data = encode_image_to_base64(read_image_file(feature_map_path / image_name))
