@@ -167,6 +167,16 @@ const CanvasEditor = () => {
     [nodes, edges, setEdges]
   );
 
+  const { fitView } = useReactFlow();
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      fitView();
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, [fitView]);
+
   return (
     <>
       {isModalOpen && <TrainModal onClose={handleModalClose} onSubmit={handleTrain} />}
@@ -182,6 +192,7 @@ const CanvasEditor = () => {
             },
           }))}
           edges={edges}
+          fitView
           onNodesChange={handleNodesChange}
           onEdgesChange={handleEdgesChange}
           onConnect={handleConnect}

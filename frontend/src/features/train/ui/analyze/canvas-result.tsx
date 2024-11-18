@@ -7,6 +7,7 @@ import {
   ReactFlowProvider,
   Background,
   BackgroundVariant,
+  useReactFlow,
   type Node as XYFlowNode,
 } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
@@ -190,6 +191,13 @@ const CanvasResult = () => {
       resetImage();
     }
   }, [heatMap, canvas]);
+
+  const { fitView } = useReactFlow();
+
+  useEffect(() => {
+    fitView();
+  }, [fitView, direction, nodes, heatMap]);
+
 
 
   return (
