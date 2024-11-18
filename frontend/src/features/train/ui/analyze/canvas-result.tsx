@@ -51,8 +51,7 @@ const CanvasResult = () => {
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
   const [direction, setDirection] = useState<LayoutOptions['direction']>('NOT');
   const [selectedNode, setSelectedNode] = useState<XYFlowNode | null>(null);
-  const { fitView } = useReactFlow();
-  const [defaultSetting, setDefaultSetting] = useState(false);
+  const [defaultSetting, setDefaultSetting] = useState(true);
   const { setCurrentDirection } = useAnalyze();
 
   const { projectName, resultName, epochName } = useProjectNameStore();
@@ -111,7 +110,7 @@ const CanvasResult = () => {
   };
 
   const handleNodeClick = (blockId: string) => {
-    setDefaultSetting(true);
+    setDefaultSetting(false);
 
     if (blockId === '0') {
       return;
@@ -140,12 +139,12 @@ const CanvasResult = () => {
         nds.map((node) =>
           node.id === nodeId
             ? {
-                ...node,
-                data: {
-                  ...node.data,
-                  featureMap: image,
-                },
-              }
+              ...node,
+              data: {
+                ...node.data,
+                featureMap: image,
+              },
+            }
             : node
         )
       );
@@ -154,7 +153,7 @@ const CanvasResult = () => {
   );
 
   const handleLayoutChange = (newDirection: LayoutOptions['direction']) => {
-    setDefaultSetting(false);
+    setDefaultSetting(true);
     setDirection(newDirection);
     setCurrentDirection(newDirection);
   };
@@ -198,13 +197,16 @@ const CanvasResult = () => {
     } else if (!heatMap) {
       resetImage();
     }
-  }, [canvas, setNodes, setEdges, setHeatMapId, handleFieldChange, heatMap, heatMapId, nodes, resetImage, setAllImage]);
+  }, [canvas, heatMap]);
+
+  const { fitView } = useReactFlow();
 
   useEffect(() => {
-    if (!defaultSetting) {
+    if (defaultSetting) {
       fitView();
     }
-  }, [fitView, direction, nodes, heatMap]);
+  }, [fitView, direction, nodes]);
+
 
   return (
     <>
@@ -226,7 +228,6 @@ const CanvasResult = () => {
         }}
         nodesDraggable={false}
         nodesConnectable={false}
-        fitView
         attributionPosition="bottom-left"
         nodeTypes={{ custom: BlockNodeFeature }}
         proOptions={proOptions}
