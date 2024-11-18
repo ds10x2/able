@@ -21,6 +21,7 @@ import { useImageStore } from '@entities/train/model/train.model';
 import { useFetchFeatureMap, useCreateFeatureMap } from '@features/train/api/use-analyze.mutation';
 import { useFeatureNodeChangeHandler } from '@features/canvas/model/use-node-change-handler.modle';
 import { initialNodes, initialEdges } from '@features/canvas/model/initial-data';
+import { useAnalyze } from '@entities/project/model/project.model'
 
 import {
   PositionedButton,
@@ -50,6 +51,9 @@ const CanvasResult = () => {
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
   const [direction, setDirection] = useState<LayoutOptions['direction']>('NOT');
   const [selectedNode, setSelectedNode] = useState<XYFlowNode | null>(null);
+  const { fitView } = useReactFlow();
+  const [defaultSetting, setDefaultSetting] = useState(false);
+  const { setCurrentDirection } = useAnalyze();
 
   const { projectName, resultName, epochName } = useProjectNameStore();
   const { uploadedImage, heatMapId, setHeatMapId, heatmapImage, setAllImage, resetImage } = useImageStore();
@@ -107,6 +111,8 @@ const CanvasResult = () => {
   };
 
   const handleNodeClick = (blockId: string) => {
+    setDefaultSetting(true);
+
     if (blockId === '0') {
       return;
     }
@@ -148,7 +154,9 @@ const CanvasResult = () => {
   );
 
   const handleLayoutChange = (newDirection: LayoutOptions['direction']) => {
+    setDefaultSetting(false);
     setDirection(newDirection);
+    setCurrentDirection(newDirection);
   };
 
   useEffect(() => {
@@ -192,10 +200,10 @@ const CanvasResult = () => {
     }
   }, [heatMap, canvas]);
 
-  const { fitView } = useReactFlow();
-
   useEffect(() => {
-    fitView();
+    if (!defaultSetting) {
+      fitView();
+    }
   }, [fitView, direction, nodes, heatMap]);
 
 

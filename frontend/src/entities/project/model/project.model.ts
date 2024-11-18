@@ -1,3 +1,4 @@
+import { AnalyzeState } from './../types/project.type';
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
 
@@ -31,4 +32,9 @@ export const useProjectStore = create<ProjectState>((set) => ({
         : null,
     })),
   resetProject: () => set({ currentProject: null }),
+}));
+
+export const useAnalyze = create<AnalyzeState>((set) => ({
+  currentDirection: 'TB',
+  setCurrentDirection: (currentDirection: string) => set({ currentDirection: currentDirection }),
 }));
