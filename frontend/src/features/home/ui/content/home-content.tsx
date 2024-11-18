@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 
 import * as S from '@/features/home/ui/content/home-content.style';
 import Common from '@shared/styles/common';
-import defaultImage from '@assets/images/default-image.png';
 import { HISTORY_PAGE_LIMIT } from '@features/home/constants/history.constant';
 import { useProjectDetail, useProjectHistory } from '@features/home/api/use-home.query';
 import { useProjectStore, useProjectNameStore } from '@entities/project/model/project.model';
@@ -15,6 +14,7 @@ import WritingIcon from '@icons/writing.svg?react';
 import ClockIcon from '@icons/clock.svg?react';
 import SettingIcon from '@icons/setting.svg?react';
 import Skeleton from '@/shared/ui/loading/skeleton';
+import BasicButton from '@/shared/ui/button/basic-button';
 
 const HomeContent = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -78,7 +78,10 @@ const HomeContent = () => {
                 <Skeleton width={30} height={20} />
               )
             ) : (
-              <S.CanvasImage src={defaultImage} alt="Canvas Image" onClick={handleCanvasClick} />
+              <S.CanvasEmpty>
+                <S.CanvasText>생성한 캔버스가 없어요</S.CanvasText>
+                <BasicButton text="캔버스 생성" width="10rem" onClick={handleCanvasClick} />
+              </S.CanvasEmpty>
             )}
           </S.CanvasContainer>
           <S.HistoryContainer>
