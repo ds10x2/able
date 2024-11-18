@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+
 import Common from '@shared/styles/common';
 
 export const SidebarContainer = styled.div`

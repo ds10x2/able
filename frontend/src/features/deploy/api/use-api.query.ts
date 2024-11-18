@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 
 import axiosInstance from '@shared/api/config/axios-instance';
 import deployKey from '@features/deploy/api/deploy-key';
-import { ApiListResponse } from '@features/deploy/types/deploy.type';
+import type { ApiListResponse } from '@features/deploy/types/deploy.type';
 
 const fetchApiLists = async (page: number, pageSize: number) => {
   try {

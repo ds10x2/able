@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+
 import Common from '@shared/styles/common';
 
 export const Container = styled.div`
@@ -65,9 +66,9 @@ export const F1ScoreTitle = styled(GraphTitle)`
 `;
 
 export const ConfusionImage = styled.img`
-  max-width: 70%; 
+  max-width: 70%;
   height: auto;
-  flex-grow: 1; 
-  object-fit: contain; 
+  flex-grow: 1;
+  object-fit: contain;
   padding: 0;
 `;
