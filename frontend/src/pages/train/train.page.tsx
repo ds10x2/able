@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 
 import { Container, Content, MainContainer } from '@pages/train/train.style';
 import { useProjectNameStore } from '@entities/project/model/project.model';
+import { useImageStore } from '@entities/train/model/train.model';
 
 import Sidebar from '@widgets/sidebar/project-sidebar';
 import AnalyzeComponent from '@features/train/ui/analyze/analyze';
@@ -14,6 +15,7 @@ const TrainPage = () => {
   const date = location.state.date;
   const { projectName } = useProjectNameStore();
   const [selectedComponent, setSelectedComponent] = useState('result');
+  const { resetImage } = useImageStore();
 
   const handleSidebarSelection = (selection: string) => {
     setSelectedComponent(selection);
@@ -21,7 +23,7 @@ const TrainPage = () => {
 
   return (
     <MainContainer>
-      <PageHeader title={projectName} date={date} />
+      <PageHeader title={projectName} date={date} onBack={resetImage} />
       <Container>
         <Sidebar onSelectionChange={handleSidebarSelection} type="train" />
         <Content>

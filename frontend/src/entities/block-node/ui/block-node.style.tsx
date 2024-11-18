@@ -45,10 +45,10 @@ export const Name = styled.label`
 
 export const Checkbox = styled.input<{ blockColor: string }>`
   appearance: none;
-  width: 16px;
-  height: 16px;
+  width: 1rem;
+  height: 1rem;
   border: 0.0625rem solid ${Common.colors.gray200};
-  border-radius: 1.6px;
+  border-radius: 0.1rem;
   background-color: ${Common.colors.white};
   cursor: pointer;
   position: relative;
@@ -75,15 +75,15 @@ export const Checkbox = styled.input<{ blockColor: string }>`
 
 export const Input = styled.input`
   width: 40%;
-  height: 24px;
-  padding: 0 8px;
+  height: 1.5rem;
+  padding: 0 0.5rem;
 
   font-size: ${Common.fontSizes.xs};
   color: ${Common.colors.gray500};
   text-align: end;
 
   border: 0.0625rem solid ${Common.colors.gray200};
-  border-radius: 1.6px;
+  border-radius: 0.1rem;
   outline: none;
 
   ::placeholder {
@@ -93,14 +93,14 @@ export const Input = styled.input`
 
 export const Image = styled.img`
   width: 100%;
-  max-height: 150px;
+  max-height: 9.375rem;
   object-fit: contain;
 `;
 
 export const CustomUploadContainer = styled.div`
   border: none;
-  padding: 25px;
-  min-height: 150px;
+  padding: 1.5625rem;
+  min-height: 9.375rem;
   text-align: center;
   cursor: pointer;
   display: flex;
@@ -115,11 +115,25 @@ export const HiddenInput = styled.input`
   display: none;
 `;
 
-export const GraphContainer = styled.div`
+
+export const GraphContainer = styled.div<{ direction: string }>`
+  position: absolute;
+  ${({ direction }) =>
+    direction === 'TB'
+      ? `
+    top: 0; 
+    left: 16.25rem; 
+  `
+      : `
+    top: 12.5rem;
+    left: 0;
+  `}
   background-color: white;
   padding: 1rem;
   border-radius: 0.5rem;
   box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
+  width: 18.75rem;
+  z-index: 10;
 `;
 
 export const Header = styled.div`
@@ -193,6 +207,7 @@ export const BarLabel = styled.span`
 `;
 
 export const Wrapper = styled.div`
+  position: relative;
   display: flex;
   flex-direction: row;
   align-items: flex-start;
