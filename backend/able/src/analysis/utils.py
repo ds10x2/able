@@ -47,7 +47,7 @@ class FeatureMapExtractor:
         self.output = self.model(input_img)
         self.save_heatmap()
         scores = self.save_top_k_scores()
-        return AnalysisResult(class_scores=scores, heatmap_block_id=self.heatmap_block_id.replace("layers.", ""))
+        return AnalysisResult(class_scores=scores, heatmap_block_id=self.heatmap_block_id.replace("module_list.", ""))
     
     def build_model(self):
         if self.model is None:
@@ -55,7 +55,7 @@ class FeatureMapExtractor:
             raise ModelLoadException("모델이 로드되지 않았습니다.")
 
         last_conv_layer_name = None
-        for name, module in self.model.named_modules():
+        for name, module in self.model.module_list.named_modules():
             self.heatmap_block_id = name
             if isinstance(module, nn.Conv2d):
                 last_conv_layer_name, last_module = name, module
@@ -134,7 +134,7 @@ class FeatureMapExtractor:
             )
             for idx, score in zip(top_indices, top_values)
         ]
-        create_file(self.checkpoint_path / ANALYSIS_RESULT, json_to_str(AnalysisResult(class_scores=scores, heatmap_block_id=self.heatmap_block_id.replace("layers.", ""))))
+        create_file(self.checkpoint_path / ANALYSIS_RESULT, json_to_str(AnalysisResult(class_scores=scores, heatmap_block_id=self.heatmap_block_id.replace("module_list.", ""))))
 
         return scores
 
