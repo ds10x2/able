@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 
-import Common from '@/shared/styles/common';
+import Common from '@shared/styles/common';
+import { ellipsisMixin } from '@shared/styles/mixins.style';
 
 export const Container = styled.div<{
   isDragging: boolean;
@@ -51,5 +52,5 @@ export const LabelText = styled.span`
   font-size: ${Common.fontSizes.sm};
   white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
+  ${ellipsisMixin}
 `;
