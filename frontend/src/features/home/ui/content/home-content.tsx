@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import * as S from '@/features/home/ui/content/home-content.style';
 import Common from '@shared/styles/common';
 import defaultImage from '@assets/images/default-image.png';
+import { HISTORY_PAGE_LIMIT } from '@features/home/constants/history.constant';
 import { useProjectDetail, useProjectHistory } from '@features/home/api/use-home.query';
 import { useProjectStore, useProjectNameStore } from '@entities/project/model/project.model';
 
@@ -12,7 +13,6 @@ import Pagination from '@shared/ui/pagination/pagination';
 import ProjectModal from '@features/home/ui/modal/project-modal';
 import WritingIcon from '@icons/writing.svg?react';
 import ClockIcon from '@icons/clock.svg?react';
-import FolderIcon from '@icons/folder.svg?react';
 import SettingIcon from '@icons/setting.svg?react';
 import Skeleton from '@/shared/ui/loading/skeleton';
 
@@ -21,7 +21,7 @@ const HomeContent = () => {
 
   const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState(1);
-  const [size] = useState(5);
+  const [size] = useState(HISTORY_PAGE_LIMIT);
 
   const { projectName } = useProjectNameStore();
   const { currentProject, setCurrentProject } = useProjectStore();
@@ -54,7 +54,6 @@ const HomeContent = () => {
       <S.HomeContentWrapper>
         <div>
           <S.Title>
-            <FolderIcon width={32} height={32} />
             {currentProject?.title ? <S.Title>{currentProject?.title}</S.Title> : <Skeleton width={8} height={1.95} />}
             <SettingIcon
               width={20}
@@ -64,37 +63,41 @@ const HomeContent = () => {
               style={{ cursor: 'pointer' }}
             />
           </S.Title>
-          <S.Description>{currentProject?.description}</S.Description>
+          <S.Description>{currentProject?.description || `${currentProject?.title}입니다`}</S.Description>
         </div>
-        <div>
-          <S.SubTitle>
-            <WritingIcon width={24} height={24} />
-            작업 중인 캔버스
-          </S.SubTitle>
-          {hasThumbnail ? (
-            currentProject?.thumbnail ? (
-              <S.CanvasImage src={currentProject?.thumbnail} alt="Canvas Image" onClick={handleCanvasClick} />
+        <S.ProjectContentContainer>
+          <S.CanvasContainer>
+            <S.SubTitle>
+              <WritingIcon width={24} height={24} />
+              작업 중인 캔버스
+            </S.SubTitle>
+            {hasThumbnail ? (
+              currentProject?.thumbnail ? (
+                <S.CanvasImage src={currentProject?.thumbnail} alt="Canvas Image" onClick={handleCanvasClick} />
+              ) : (
+                <Skeleton width={30} height={20} />
+              )
             ) : (
-              <Skeleton width={16} height={10} />
-            )
-          ) : (
-            <S.CanvasImage src={defaultImage} alt="Canvas Image" onClick={handleCanvasClick} />
-          )}
-        </div>
-        <div>
-          <S.SubTitle>
-            <ClockIcon width={24} height={24} />
-            학습 기록
-          </S.SubTitle>
-          <S.HistoryWrapper>
-            <HistoryList trainSummaries={historyData?.trainSummaries || []} />
-            <Pagination
-              currentPage={currentPage}
-              totalPages={historyData?.totalPages || 0}
-              onPageChange={setCurrentPage}
-            />
-          </S.HistoryWrapper>
-        </div>
+              <S.CanvasImage src={defaultImage} alt="Canvas Image" onClick={handleCanvasClick} />
+            )}
+          </S.CanvasContainer>
+          <S.HistoryContainer>
+            <S.SubTitle>
+              <ClockIcon width={24} height={24} />
+              학습 기록
+            </S.SubTitle>
+            <S.HistoryWrapper>
+              <HistoryList trainSummaries={historyData?.trainSummaries || []} />
+              {historyData?.trainSummaries && (
+                <Pagination
+                  currentPage={currentPage}
+                  totalPages={historyData?.totalPages || 0}
+                  onPageChange={setCurrentPage}
+                />
+              )}
+            </S.HistoryWrapper>
+          </S.HistoryContainer>
+        </S.ProjectContentContainer>
       </S.HomeContentWrapper>
       {isModalOpen && <ProjectModal onClose={closeModal} type={'modify'} />}
     </>

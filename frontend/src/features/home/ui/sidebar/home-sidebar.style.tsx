@@ -6,7 +6,7 @@ import { scrollbarHiddenMixin } from '@shared/styles/mixins.style';
 export const SidebarContainer = styled.div`
   width: 15.625rem;
   height: 100%;
-  background-color: #f8f9fc;
+  background-color: ${Common.colors.white};
   padding: 1.25rem 1rem;
   border-right: 0.0625rem solid #ddd;
   display: flex;
@@ -14,8 +14,8 @@ export const SidebarContainer = styled.div`
 `;
 
 export const Title = styled.h2`
-  font-size: ${Common.fontSizes['2xl']};
-  font-weight: ${Common.fontWeights.medium};
+  font-size: ${Common.fontSizes.xl};
+  font-weight: ${Common.fontWeights.semiBold};
   margin-bottom: 0.25rem;
 `;
 
@@ -69,12 +69,13 @@ export const Folder = styled.div<{ isSelected: boolean }>`
 export const Footer = styled.div`
   display: flex;
   align-items: center;
-  background-color: #eaeeff;
+  justify-content: center;
+  background-color: #eaf8f8;
   border-radius: 0.5rem;
   padding: 0.625rem;
   margin-top: auto;
   gap: 0.9375rem;
-  min-height: 6.25rem;
+  min-height: 5.4rem;
   transition-duration: 0.6s;
   cursor: pointer;
 
@@ -83,31 +84,22 @@ export const Footer = styled.div`
   }
 `;
 
-export const RocketCircle = styled.div`
+export const FooterIcon = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #ced0ff;
-  border-radius: 50%;
-  width: 60px;
-  height: 60px;
-`;
-
-export const FooterIcon = styled.span`
-  margin-right: 0.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
 `;
 
 export const FooterText = styled.div`
-  font-size: ${Common.fontSizes.xl};
-  font-weight: bold;
-  color: #343a40;
+  font-size: ${Common.fontSizes.lg};
+  font-weight: ${Common.fontWeights.medium};
+  color: ${Common.colors.gray500};
 `;
 
 export const FooterStatus = styled.div`
-  font-size: 0.75rem;
-  color: #6c757d;
+  font-size: ${Common.fontSizes.sm};
+  color: ${Common.colors.gray400};
   margin-top: 0.25rem;
 `;
