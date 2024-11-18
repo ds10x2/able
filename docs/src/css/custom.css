@@ -1,0 +1,45 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+/* You can override the default Infima variables here. */
+:root {
+  --ifm-font-family-base: "Pretendard", sans-serif;
+  --ifm-color-primary: #0051ff;
+  --ifm-color-primary-dark: #0b4bd7;
+  --ifm-color-primary-darker: #123f9f;
+  --ifm-color-primary-darkest: rgb(3, 17, 39);
+  --ifm-color-primary-light: #dae8fd;
+  --ifm-color-primary-lighter: #eaf3ff;
+  --ifm-color-primary-lightest: rgb(244, 248, 255);
+  --ifm-code-font-size: 95%;
+  --ifm-code-font-color: #3e3e3e;
+  --docusaurus-highlighted-code-line-bg: #f0f1f4;
+}
+
+/* For readability concerns, you should choose a lighter palette in dark mode. */
+[data-theme="dark"] {
+  --ifm-color-primary: #4c85ff;
+  --ifm-color-primary-dark: #0051ff;
+  --ifm-color-primary-darker: #0b4bd7;
+  --ifm-color-primary-darkest: #082b77;
+  --ifm-color-primary-light: #6b9aff;
+  --ifm-color-primary-lighter: #7fa8ff;
+  --ifm-color-primary-lightest: #9ebcff;
+  --ifm-code-font-color: #f0f1f4;
+  --docusaurus-highlighted-code-line-bg: #3e3e3e;
+}
+
+@font-face {
+  font-family: "Pretendard";
+  src: url("../../static/font/PretendardVariable.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+.hero--primary-light {
+  background-color: var(--ifm-color-primary-light);
+}
