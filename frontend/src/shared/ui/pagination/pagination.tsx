@@ -1,5 +1,7 @@
 import { useState } from 'react';
+
 import { PaginationWrapper, PageNumber } from '@shared/ui/pagination/pagination.style';
+
 import ArrowButton from '@shared/ui/button/arrow-button';
 
 interface PaginationProps {
