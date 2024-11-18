@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 
 import Common from '@shared/styles/common';
+import { scrollbarHiddenMixin } from '@shared/styles/mixins.style';
 
 export const SidebarContainer = styled.div`
   width: 14.5rem;
@@ -18,12 +19,13 @@ export const BestSection = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  margin-bottom: 1.5rem;
 `;
 
-export const Divider = styled.div`
-  height: 0.0625rem;
-  background-color: ${Common.colors.gray300};
-  margin: 0.5rem 0;
+export const Text = styled.span`
+  font-size: ${Common.fontSizes.sm};
+  font-weight: ${Common.fontWeights.semiBold};
+  margin-left: 0.7rem;
 `;
 
 export const ScrollableSection = styled.div`
@@ -33,19 +35,15 @@ export const ScrollableSection = styled.div`
   flex-direction: column;
   gap: 0.5rem;
 
-  &::-webkit-scrollbar-thumb {
-    background: ${Common.colors.gray300};
-    border-radius: 0.375rem;
-  }
+  ${scrollbarHiddenMixin}
 `;
 
 export const EpochItem = styled.div<{ isSelected: boolean }>`
   padding: 0.75rem;
-  margin: 0 0.5rem;
-  background-color: ${(props) => props.isSelected ? Common.colors.gray200 : "transparent"};
+  background-color: ${(props) => (props.isSelected ? Common.colors.gray100 : 'transparent')};
   border-radius: 0.375rem;
-  font-weight: ${Common.fontWeights.regular};
-  font-size: 0.9375rem;
+  font-size: ${Common.fontSizes.sm};
+  color: ${Common.colors.gray500};
   cursor: pointer;
   transition-property: background-color;
   transition-duration: 0.4s;

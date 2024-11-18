@@ -78,6 +78,7 @@ const EpochListSidebar = () => {
 
   return (
     <S.SidebarContainer>
+      <S.Text>베스트</S.Text>
       <S.BestSection>
         {bestEpochs.map((epoch, index) => (
           <S.EpochItem key={`best-${index}`} isSelected={epochName === epoch} onClick={() => handleClick(epoch)}>
@@ -85,7 +86,7 @@ const EpochListSidebar = () => {
           </S.EpochItem>
         ))}
       </S.BestSection>
-      <S.Divider />
+      <S.Text>일반</S.Text>
       <SearchBar
         value={value}
         placeholder="에포크 검색"
