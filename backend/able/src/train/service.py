@@ -20,7 +20,7 @@ logger = logging.getLogger(__name__)
 
 path_manager = PathManager()
 
-async def train_in_background(request: TrainRequest):
+def train_in_background(request: TrainRequest):
     train(request)
 
 def train(request: TrainRequest):
