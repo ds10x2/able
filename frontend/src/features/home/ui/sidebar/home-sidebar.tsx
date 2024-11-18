@@ -63,7 +63,8 @@ const HomeSideBar = () => {
         ) : (
           projects?.map((project: string, index: number) => (
             <S.Folder key={index} isSelected={projectName === project} onClick={() => handleProjectSelect(project)}>
-              <FileIcon width={20} height={20} /> {project}
+              <FileIcon width={20} height={20} />
+              <S.ProjectName>{project}</S.ProjectName>
             </S.Folder>
           ))
         )}

@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 
 import Common from '@shared/styles/common';
-import { scrollbarHiddenMixin } from '@shared/styles/mixins.style';
+import { ellipsisMixin, scrollbarHiddenMixin } from '@shared/styles/mixins.style';
 
 export const SidebarContainer = styled.div`
   width: 15.625rem;
@@ -64,6 +64,10 @@ export const Folder = styled.div<{ isSelected: boolean }>`
   &:hover {
     background-color: ${Common.colors.gray100};
   }
+`;
+
+export const ProjectName = styled.div`
+  ${ellipsisMixin}
 `;
 
 export const Footer = styled.div`
