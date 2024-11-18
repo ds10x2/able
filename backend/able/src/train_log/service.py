@@ -6,6 +6,7 @@ from src.train_log.utils import parse_train_result_date, format_float
 from src.train_log.schemas import TrainLogResponse, TrainSummary
 from src.utils import str_to_json, handle_pagination
 from src.file.constants import *
+from src.file.exceptions import FileNotFoundException
 
 path_manager = PathManager()
 
@@ -29,15 +30,19 @@ def get_train_logs(title:str, page:int, page_size:int) -> TrainLogResponse :
 
         index = len(train_results) + 1
 
-        performance_data = str_to_json(get_file(performance_metrics_path))
-        raw_accuracy = performance_data["metrics"].get("accuracy")
-        accuracy = format_float(raw_accuracy) if raw_accuracy is not None else "0"
+        try:
+            performance_data = str_to_json(get_file(performance_metrics_path))
+            raw_accuracy = performance_data["metrics"].get("accuracy")
+            accuracy = format_float(raw_accuracy) if raw_accuracy is not None else "0"
+            accuracy = accuracy + "%"
+        except FileNotFoundException as e:
+            accuracy = "-"
 
         train_result = TrainSummary(
             index=index,
             origin_dir_name=folder_path.name,
             date=formatted_date,
-            accuracy=accuracy + "%",
+            accuracy=accuracy,
             status=metadata["status"]
         )
 
