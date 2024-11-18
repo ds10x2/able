@@ -26,7 +26,7 @@ export const ApiCell = styled.td`
   text-align: center;
   width: ${({ width }) => width || 'auto'};
   height: 3.4375rem;
-  align-items: center; 
+  align-items: center;
 `;
 
 export const CellIcon = styled.div`

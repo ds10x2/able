@@ -7,7 +7,7 @@ import { BLOCK_COLORS } from '@shared/constants/block';
 import type { BlockItem } from '@features/canvas/types/block.type';
 import { capitalizeFirstLetter } from '@shared/utils/formatters.util';
 
-import ArrowButton from '@/shared/ui/button/arrow-button';
+import ArrowButton from '@shared/ui/button/arrow-button';
 
 interface BlockNodeProps {
   id: string;

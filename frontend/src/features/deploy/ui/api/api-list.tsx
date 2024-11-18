@@ -1,6 +1,6 @@
 import toast from 'react-hot-toast';
 
-import { ApiResponse } from '@features/deploy/types/deploy.type';
+import type { ApiResponse } from '@features/deploy/types/deploy.type';
 import { ApiListWrapper, ApiRow, ApiCell, CellIcon } from '@/features/deploy/ui/api/api-list.style';
 import { useStopApi, useRemoveApi } from '@features/deploy/api/use-api.mutation';
 

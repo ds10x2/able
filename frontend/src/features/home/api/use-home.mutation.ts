@@ -1,8 +1,8 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import axiosInstance from '@shared/api/config/axios-instance';
 
+import axiosInstance from '@shared/api/config/axios-instance';
 import homeKey from '@features/home/api/home-key';
-import { Project, UpdateProjectSchema } from '@features/home/types/home.type';
+import type { Project, UpdateProjectSchema } from '@features/home/types/home.type';
 import { useProjectNameStore, useProjectStore } from '@entities/project/model/project.model';
 
 const createProject = async (projectData: Project): Promise<Project> => {

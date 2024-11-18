@@ -5,7 +5,7 @@ import { HISTORY_PAGE_LIMIT } from '@features/home/constants/history.constant';
 import type { HistoryItem } from '@features/home/types/home.type';
 import { useProjectNameStore } from '@entities/project/model/project.model';
 
-import * as S from '@/features/home/ui/content/history-list.style';
+import * as S from '@features/home/ui/content/history-list.style';
 
 interface HistoryListProps {
   trainSummaries: HistoryItem[];

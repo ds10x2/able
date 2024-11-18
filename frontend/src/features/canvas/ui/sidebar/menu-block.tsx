@@ -3,7 +3,7 @@ import { useDrag } from 'react-dnd';
 
 import * as S from '@features/canvas/ui/sidebar/menu-block.style';
 import { BLOCK_COLORS } from '@shared/constants/block';
-import { BlockField } from '@features/canvas/types/block.type';
+import type { BlockField } from '@features/canvas/types/block.type';
 import { capitalizeFirstLetter } from '@shared/utils/formatters.util';
 
 import MenuIcon from '@icons/menu.svg?react';

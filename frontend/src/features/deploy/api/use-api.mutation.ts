@@ -2,7 +2,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 import axiosInstance from '@/shared/api/config/axios-instance';
 import deployKey from '@features/deploy/api/deploy-key';
-import { ApiSchema } from '@features/deploy/types/deploy.type';
+import type { ApiSchema } from '@features/deploy/types/deploy.type';
 
 const registerAPI = async ({ projectName, trainResult, checkpoint, uri, description }: ApiSchema): Promise<boolean> => {
   try {

@@ -16,22 +16,13 @@ const LossGraph = ({ lossData }: LossGraphProps) => {
     <ResponsiveContainer width="100%" height="100%">
       <LineChart data={lossData} margin={{ top: 5, right: 30, left: 0, bottom: 0 }}>
         <CartesianGrid strokeDasharray="3 3" stroke={Common.colors.gray200} />
-        <XAxis
-          dataKey="epoch"
-          tick={{ fontSize: Common.fontSizes['2xs'] }}
-          tickFormatter={(value) => `${value}`}
-        />
+        <XAxis dataKey="epoch" tick={{ fontSize: Common.fontSizes['2xs'] }} tickFormatter={(value) => `${value}`} />
         <YAxis
           domain={['auto', 'auto']}
           tick={{ fontSize: Common.fontSizes.xs }}
           tickFormatter={(value) => parseFloat(value.toFixed(3)).toString()}
         />
-        <Tooltip
-          formatter={(value: number, name: string) => [
-            parseFloat(value.toFixed(3)),
-            name,
-          ]}
-        />
+        <Tooltip formatter={(value: number, name: string) => [parseFloat(value.toFixed(3)), name]} />
         <Legend
           verticalAlign="top"
           align="right"

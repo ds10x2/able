@@ -1,4 +1,5 @@
 import { Position } from '@xyflow/react';
+
 import { Direction } from '@features/train/types/algorithm.type';
 
 export function getSourceHandlePosition(direction: Direction) {

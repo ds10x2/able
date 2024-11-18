@@ -1,5 +1,6 @@
-import styled from '@emotion/styled';
 import Common from '@shared/styles/common';
+
+import styled from '@emotion/styled';
 
 export const InfoWrapper = styled.div`
   display: flex;
