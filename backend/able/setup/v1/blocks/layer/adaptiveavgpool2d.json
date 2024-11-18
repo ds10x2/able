@@ -5,7 +5,7 @@
     {
       "name": "output_size",
       "value": null,
-      "type": "int",
+      "type": "list_int",
       "is_required": true
     }
   ]

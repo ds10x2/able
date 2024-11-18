@@ -1,3 +1,4 @@
+import gc
 import json
 from . import TrainRequest
 from src.train.schemas import TrainResultResponse, EpochResult, Loss, Accuracy
@@ -103,7 +104,7 @@ def train(request: TrainRequest):
     train_logger = TrainLogger(project_name, result_name)
 
     try:
-        trainer = Trainer(model, dataset, criterion, optimizer, request.batch_size, TrainLogger(request.project_name, result_name), device=device)
+        trainer = Trainer(model, dataset, criterion, optimizer, request.batch_size, train_logger, device=device)
 
         logger.info("학습 시작")
         trainer.train(request.epoch)
@@ -117,6 +118,8 @@ def train(request: TrainRequest):
         train_logger.update_status(TrainStatus.FAIL)
         raise e
     finally:
+        torch.cuda.memory.empty_cache()
+        gc.collect()
         update_device_status(request.device.name, DeviceStatus.NOT_IN_USE)
 
 def load_train_result(project_name: str, result_name: str) -> TrainResultResponse:

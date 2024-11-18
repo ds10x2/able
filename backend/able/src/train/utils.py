@@ -350,25 +350,41 @@ def topological_sort(blocks: list[CanvasBlock], edges: list[Edge]) -> list[Canva
     return list(sorted_blocks)
 
 class UserModel(nn.Module):
-    def __init__(self, **kwargs):
+    def __init__(self, blocks: list[CanvasBlock], edges: list[Edge]):
         super(UserModel, self).__init__()
-        self.layers = nn.Sequential()
+        self.child_map = defaultdict(list)
+        self.module_list = nn.ModuleList()
+        self.module_id_list = []
 
-        for k, v in kwargs.items():
-            setattr(self, k, v)
+        for block in blocks:
+            module = convert_block_to_obj(block)
+
+            self.module_list.add_module(block.id, module)
+            self.module_id_list.append(block.id)
+
+        for edge in edges:
+            self.child_map[edge.source].append(edge.target)
 
     def forward(self, x):
-        return self.layers(x)
+        layer_input: dict[str, list] = defaultdict(list)
+        layer_input[self.module_id_list[0]].append(x)
+
+        output = 0
+        for module_id in self.module_id_list:
+            submodule = self.module_list.get_submodule(module_id)
+            in_data = layer_input.pop(module_id)
+
+            output = submodule(*in_data)
+
+            for child_id in self.child_map[module_id]:
+                layer_input[child_id].append(output)
+
+        return output
 
 def convert_block_graph_to_model(blocks: list[CanvasBlock], edges: list[Edge]) -> nn.Module | None:
     sorted_blocks = topological_sort(blocks, edges)
 
-    model = UserModel()
-
-    for block in sorted_blocks:
-        module = convert_block_to_obj(block)
-
-        model.layers.add_module(block.id, module)
+    model = UserModel(sorted_blocks, edges)
 
     return model
 
@@ -517,3 +533,6 @@ def load_transform_pipeline(project_name: str, result_name:str) -> torchvision.t
 
     with open(transform_pipeline_path, 'rb') as f:
         return pickle.load(f)
+
+if __name__=="__main__":
+    print(torchvision.models.resnet18())
