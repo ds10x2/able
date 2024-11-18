@@ -53,6 +53,7 @@ export interface CreateFeatureMapProps {
 }
 
 export interface HeatMapResponse {
+  heatmapBlockId: string;
   originalImg: string;
   heatmapImg: string;
   classScores: ClassScore[];

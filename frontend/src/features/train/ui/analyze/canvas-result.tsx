@@ -176,14 +176,8 @@ const CanvasResult = () => {
   useEffect(() => {
     if (canvas && heatMap && nodes.length > 0) {
       const firstNodeId = nodes[0].id;
-      const { blocks } = canvas.canvas;
 
-      blocks.map((block) => {
-        if (block.type === 'activation') {
-          setHeatMapId(block.id);
-        }
-      });
-
+      setHeatMapId(heatMap.heatmapBlockId);
       setAllImage({
         uploadedImage: heatMap.originalImg,
         heatmapImage: heatMap.heatmapImg,

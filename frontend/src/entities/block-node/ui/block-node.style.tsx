@@ -161,13 +161,13 @@ export const BarWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   text-align: center;
-  width: 5rem;
+  width: 4.375rem;
   margin-top: 1.25rem;
 `;
 
 export const Bar = styled.div<{ height: number; color: string }>`
   width: 3.4375rem;
-  height: ${(props) => (props.height) / 16}rem;
+  height: ${(props) => 1.25 + (props.height) / 16}rem;
   background-color: ${(props) => props.color};
   border-radius: 0.125rem;
   display: flex;
