@@ -183,6 +183,7 @@ const CanvasResult = () => {
 
   useEffect(() => {
     if (canvas && heatMap && nodes.length > 0) {
+      setDefaultSetting(false);
       const firstNodeId = nodes[0].id;
 
       setHeatMapId(heatMap.heatmapBlockId);
@@ -194,10 +195,10 @@ const CanvasResult = () => {
 
       handleFieldChange(firstNodeId, heatMap.originalImg);
       handleFieldChange(heatMapId, heatMap.heatmapImg);
-    } else if (!heatMap) {
+    } else {
       resetImage();
     }
-  }, [canvas, heatMap]);
+  }, [canvas, heatMap, epochName]);
 
   const { fitView } = useReactFlow();
 
@@ -205,7 +206,7 @@ const CanvasResult = () => {
     if (defaultSetting) {
       fitView();
     }
-  }, [fitView, direction, nodes]);
+  }, [direction, nodes, canvas]);
 
 
   return (
