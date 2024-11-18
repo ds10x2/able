@@ -20,6 +20,7 @@ import { useImageStore } from '@entities/train/model/train.model';
 import { useFetchFeatureMap, useCreateFeatureMap } from '@features/train/api/use-analyze.mutation';
 import { useFeatureNodeChangeHandler } from '@features/canvas/model/use-node-change-handler.modle';
 import { initialNodes, initialEdges } from '@features/canvas/model/initial-data';
+import { useAnalyze } from '@entities/project/model/project.model'
 
 import {
   PositionedButton,
@@ -50,6 +51,8 @@ const CanvasResult = () => {
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
   const [direction, setDirection] = useState<LayoutOptions['direction']>('NOT');
   const [selectedNode, setSelectedNode] = useState<XYFlowNode | null>(null);
+  const [defaultSetting, setDefaultSetting] = useState(true);
+  const { setCurrentDirection } = useAnalyze();
 
   const { projectName, resultName, epochName } = useProjectNameStore();
   const { uploadedImage, heatMapId, setHeatMapId, heatmapImage, setAllImage, resetImage } = useImageStore();
@@ -107,6 +110,8 @@ const CanvasResult = () => {
   };
 
   const handleNodeClick = (blockId: string) => {
+    setDefaultSetting(false);
+
     if (blockId === '0') {
       return;
     }
@@ -134,12 +139,12 @@ const CanvasResult = () => {
         nds.map((node) =>
           node.id === nodeId
             ? {
-                ...node,
-                data: {
-                  ...node.data,
-                  featureMap: image,
-                },
-              }
+              ...node,
+              data: {
+                ...node.data,
+                featureMap: image,
+              },
+            }
             : node
         )
       );
@@ -148,7 +153,9 @@ const CanvasResult = () => {
   );
 
   const handleLayoutChange = (newDirection: LayoutOptions['direction']) => {
+    setDefaultSetting(true);
     setDirection(newDirection);
+    setCurrentDirection(newDirection);
   };
 
   useEffect(() => {
@@ -190,13 +197,16 @@ const CanvasResult = () => {
     } else if (!heatMap) {
       resetImage();
     }
-  }, [canvas, setNodes, setEdges, setHeatMapId, handleFieldChange, heatMap, heatMapId, nodes, resetImage, setAllImage]);
+  }, [canvas, heatMap]);
 
   const { fitView } = useReactFlow();
 
   useEffect(() => {
-    fitView();
-  }, [fitView, direction, nodes, heatMap]);
+    if (defaultSetting) {
+      fitView();
+    }
+  }, [fitView, direction, nodes]);
+
 
   return (
     <>
@@ -218,7 +228,6 @@ const CanvasResult = () => {
         }}
         nodesDraggable={false}
         nodesConnectable={false}
-        fitView
         attributionPosition="bottom-left"
         nodeTypes={{ custom: BlockNodeFeature }}
         proOptions={proOptions}

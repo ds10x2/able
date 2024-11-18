@@ -15,3 +15,8 @@ export interface ProjectState {
   updateCurrentProject: (prevTitle: string, prevDescription: string) => void;
   resetProject: () => void;
 }
+
+export interface AnalyzeState {
+  currentDirection: string;
+  setCurrentDirection: (currentDirection: string) => void;
+}

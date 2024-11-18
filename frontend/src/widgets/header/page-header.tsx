@@ -8,12 +8,17 @@ import ArrowButton from '@shared/ui/button/arrow-button';
 interface PageHeaderProps {
   title: string;
   date?: string;
+  onBack?: () => void;
 }
 
-const PageHeader = ({ title, date }: PageHeaderProps) => {
+const PageHeader = ({ title, date, onBack }: PageHeaderProps) => {
   const navigate = useNavigate();
-  const handleGoBack = () => navigate(-1);
-
+  const handleGoBack = () => {
+    if (onBack) {
+      onBack();
+    }
+    navigate(- 1);
+  }
   return (
     <S.Header>
       <ArrowButton direction="left" size="md" color={Common.colors.white} onClick={handleGoBack} />

@@ -7,6 +7,7 @@ import { BLOCK_COLORS } from '@shared/constants/block';
 import type { BlockItem } from '@features/canvas/types/block.type';
 import { capitalizeFirstLetter } from '@shared/utils/formatters.util';
 import { useImageStore } from '@entities/train/model/train.model';
+import { useAnalyze } from '@entities/project/model/project.model'
 
 import UploadImageIcon from '@icons/uploadImage.svg?react';
 import GraphIcon from '@icons/graph.svg?react';
@@ -27,6 +28,7 @@ const BlockNodeFeature = ({
   targetPosition = Position.Top,
 }: BlockNodeFeatureProps) => {
   const { uploadedImage, setUploadedImage, heatmapImage, classScores, heatMapId, resetImage } = useImageStore();
+  const { currentDirection } = useAnalyze();
 
   const blockColor = useMemo(
     () => (data?.block?.type ? BLOCK_COLORS[data.block.type] : Common.colors.gray200),
@@ -91,7 +93,7 @@ const BlockNodeFeature = ({
         <Handle type="source" position={sourcePosition} />
       </S.Container>
       {data.block.id === heatMapId && heatmapImage && (
-        <S.GraphContainer>
+        <S.GraphContainer direction={currentDirection}>
           <S.Header>
             <S.Title>
               <GraphIcon width={21} height={21} />
