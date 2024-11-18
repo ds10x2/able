@@ -2,7 +2,7 @@ from pathlib import Path
 
 import uvicorn
 from fastapi import FastAPI, HTTPException,Request
-from starlette.responses import JSONResponse, HTMLResponse
+from starlette.responses import JSONResponse, HTMLResponse, FileResponse
 from fastapi.middleware.cors import CORSMiddleware
 from starlette.staticfiles import StaticFiles
 from starlette.templating import Jinja2Templates
@@ -61,9 +61,14 @@ base_dir = Path(__file__).parent.parent
 # assets 폴더를 정적 파일 경로로 설정
 app.mount("/assets", StaticFiles(directory=base_dir / "static/assets"), name="assets")
 app.mount("/fonts", StaticFiles(directory=base_dir / "static/fonts"), name="fonts")
+app.mount("/favicon.ico", StaticFiles(directory=base_dir / "static"), name="favicon.ico")
 
 # static 폴더를 템플릿 경로로 설정
 templates = Jinja2Templates(directory=base_dir / "static")
+
+@app.get("/favicon.ico", response_class=FileResponse)
+async def favicon():
+    return FileResponse(base_dir / "static" / "favicon.ico")
 
 # React index.html로 라우팅
 @app.get("/", response_class=HTMLResponse)
@@ -78,4 +83,4 @@ async def base_custom_exception_handler(request: Request, exc: BaseCustomExcepti
     )
 
 if __name__ == "__main__":
-    uvicorn.run("main:app", port=5000, log_level="info", workers=3)
+    uvicorn.run("main:app", port=5000, log_level="info")
