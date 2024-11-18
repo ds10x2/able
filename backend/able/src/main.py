@@ -24,7 +24,9 @@ app = FastAPI()
 origins = [
     "http://localhost",
     "http://localhost:5173",
-    "http://localhost:8000"
+    "http://localhost:8000",
+    "http://localhost:5000",
+    "http://REMOVED:5000"
 ]
 
 app.add_middleware(
@@ -59,7 +61,7 @@ base_dir = Path(__file__).parent.parent
 
 # assets 폴더를 정적 파일 경로로 설정
 app.mount("/assets", StaticFiles(directory=base_dir / "static/assets"), name="assets")
-app.mount("/fonts", StaticFiles(directory="static/fonts"), name="fonts")
+app.mount("/fonts", StaticFiles(directory=base_dir / "static/fonts"), name="fonts")
 
 # static 폴더를 템플릿 경로로 설정
 templates = Jinja2Templates(directory=base_dir / "static")
@@ -77,4 +79,4 @@ async def base_custom_exception_handler(request: Request, exc: BaseCustomExcepti
     )
 
 if __name__ == "__main__":
-    uvicorn.run("main:app", port=8000, log_level="info")
+    uvicorn.run("main:app", port=5000, log_level="info")
