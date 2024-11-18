@@ -4,7 +4,7 @@ import Common from '@shared/styles/common';
 export const InfoWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: start;
 `;
 
 export const TitleSection = styled.div`
@@ -15,7 +15,7 @@ export const TitleSection = styled.div`
 `;
 
 export const Title = styled.h1`
-  font-size: ${Common.fontSizes['4xl']};
+  font-size: ${Common.fontSizes['3xl']};
   font-weight: ${Common.fontWeights.medium};
 `;
 
@@ -31,7 +31,6 @@ export const InfoSection = styled.div`
 
 export const InfoText = styled.div`
   display: flex;
-  width: 10rem;
 `;
 
 export const Label = styled.span`
@@ -41,6 +40,12 @@ export const Label = styled.span`
 
 export const Value = styled.span`
   color: ${Common.colors.gray400};
+`;
+
+export const Link = styled.a<{ isRunning: boolean }>`
+  color: ${({ isRunning }) => (isRunning ? Common.colors.primary : Common.colors.gray400)};
+  text-decoration-line: none;
+  cursor: ${({ isRunning }) => (isRunning ? 'pointer' : 'auto')};
 `;
 
 export const Status = styled.span`

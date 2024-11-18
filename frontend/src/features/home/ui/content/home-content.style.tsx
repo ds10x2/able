@@ -7,7 +7,7 @@ export const HomeContentWrapper = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
-  gap: 1.875rem;
+  gap: 2.5rem;
 `;
 
 export const Title = styled.div`
@@ -16,6 +16,20 @@ export const Title = styled.div`
   display: flex;
   align-items: center;
   gap: 0.75rem;
+`;
+
+export const ProjectContentContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const CanvasContainer = styled.div`
+  width: 50%;
+  padding-right: 3rem;
+`;
+
+export const HistoryContainer = styled.div`
+  width: 50%;
 `;
 
 export const SubTitle = styled.h2`
@@ -28,40 +42,26 @@ export const SubTitle = styled.h2`
   margin-bottom: 0.9375rem;
 `;
 
-export const PythonTitle = styled.span`
-  font-size: 14px;
-  font-weight: ${Common.fontWeights.regular};
-  color: #a9a9a9;
-`;
-
 export const Description = styled.p`
   margin-top: 1rem;
   min-height: 1.25rem;
   color: ${Common.colors.gray400};
-`;
-
-export const CanvasWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #fff;
-  padding: 1rem;
-  border-radius: 0.5rem;
-  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
+  font-size: ${Common.fontSizes.lg};
 `;
 
 export const CanvasImage = styled.img`
-  width: 16rem;
-  height: 10rem;
-  border-radius: 0.4rem;
+  width: 100%;
+  height: 20.75rem;
+  border-radius: 0.5rem;
   object-fit: cover;
   cursor: pointer;
 `;
 
 export const HistoryWrapper = styled.div`
   height: 100%;
+  display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 2rem;
 `;
 
 export const Text = styled.div`
