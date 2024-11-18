@@ -16,10 +16,10 @@ const HistoryList = ({ trainSummaries }: HistoryListProps) => {
   const { setResultName } = useProjectNameStore();
   const emptyRows = HISTORY_PAGE_LIMIT - trainSummaries.length;
 
-  const handleHistoryClick = (result: string, status: string) => {
+  const handleHistoryClick = (result: string, status: string, date: string) => {
     if (status === '완료') {
       setResultName(result);
-      navigate('/train');
+      navigate('/train', { state: { date: date } });
     } else {
       toast.error('빌드에 실패한 모델이에요.');
     }
@@ -51,7 +51,7 @@ const HistoryList = ({ trainSummaries }: HistoryListProps) => {
             {trainSummaries.map((summary) => (
               <S.HistoryRow
                 key={summary.index}
-                onClick={() => handleHistoryClick(summary.originDirName, summary.status)}
+                onClick={() => handleHistoryClick(summary.originDirName, summary.status, summary.date)}
               >
                 <S.HistoryCell width="10%">{summary.index}</S.HistoryCell>
                 <S.HistoryCell width="40%">{summary.date}</S.HistoryCell>
