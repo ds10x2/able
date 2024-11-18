@@ -41,7 +41,7 @@ sidebar_position: 1
 - **Optimizer**
 - **Module**
 
-**블록** 상세 정보는 [AI 모델 만들기](../tutorial-block-coding/make-model.md)를 참고해주세요.
+**블록** 상세 정보는 [AI 모델 만들기](../guide-block-coding/make-model.md)를 참고해주세요.
 
 ### deploy
 

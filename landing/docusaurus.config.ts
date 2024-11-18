@@ -59,7 +59,7 @@ const config: Config = {
           type: "docSidebar",
           sidebarId: "tutorialSidebar",
           position: "left",
-          label: "Tutorial",
+          label: "Guide",
         }
       ],
     },
@@ -70,7 +70,7 @@ const config: Config = {
           title: "Docs",
           items: [
             {
-              label: "Tutorial",
+              label: "Guide",
               to: "/docs/category/시작하기",
             },
           ],
