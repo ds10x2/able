@@ -163,10 +163,14 @@ def load_train_result(project_name: str, result_name: str) -> TrainResultRespons
             )
             epoch_results.append(epoch_result)
 
+    epochs = [epoch for epoch in epoch_results if epoch.epoch not in ("train_best", "valid_best", "final")]
+    epochs.sort(key=lambda x : (len(x.epoch), x.epoch))
+    epochs.extend([epoch for epoch in epoch_results if epoch.epoch in ("train_best", "valid_best", "final")])
+
     # TrainResultResponse 반환
     return TrainResultResponse(
         confusion_matrix=confusion_matrix,
         performance_metrics=performance_metrics,
         f1_score=str(f1_score),
-        epoch_result=epoch_results
+        epoch_result=epochs
     )
