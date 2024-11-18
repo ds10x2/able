@@ -71,10 +71,12 @@ export const useCreateProject = () => {
 
 export const useUpdateProject = () => {
   const { updateCurrentProject } = useProjectStore();
+  const { setProjectName } = useProjectNameStore();
 
   return useMutation({
     mutationFn: updateProject,
     onSuccess: (data) => {
+      setProjectName(data.title);
       updateCurrentProject(data.title, data.description);
     },
   });
