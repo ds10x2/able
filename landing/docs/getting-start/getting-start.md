@@ -6,6 +6,8 @@ sidebar_position: 2
 
 ABLE을 사용하기 위한 초기 설정을 해봅시다.
 
+---
+
 ## 사전 준비
 
 ABLE을 사용하기 위해서는 Docker 설치가 필요합니다. [Docker 공식 웹사이트](https://www.docker.com/)를 방문해 Docker 관련 정보를 확인하세요.
@@ -15,7 +17,7 @@ ABLE을 사용하기 위해서는 Docker 설치가 필요합니다. [Docker 공�
 최신 버전의 **Docker**가 설치되어 있는지 확인한 다음 명령줄에 다음 명령을 실행합니다.
 
 ```bash
-docker pull able:latest
+docker pull ai-block-editor:latest
 ```
 
 현재 ABLE의 최신버전은 1.0.0 입니다.
@@ -26,12 +28,12 @@ docker pull able:latest
 
 ```bash
 docker run -d \
-    --name $BACKEND_IMAGE \
+    --name able \
     -p 5000:5000 \
     -p 8088:8088 \
     -e TZ=Asia/Seoul \
     -e PYTHONPATH=/app \
-    $BACKEND_IMAGE
+    ai-block-editor
 
 ```
 
@@ -47,6 +49,8 @@ docker run -d \
 
 ### 추가 설정
 
-`-v /var/lib/able/blocks:/app/able/v1/blocks` : ABLE의 블록 정보를 볼륨으로 연결합니다.
+아래 명령어를 통해 데이터를 컨테이너 외부로 저장하고 관리할 수 있습니다:
 
-`-v /var/lib/able/projects:/app/able/v1/data/projects` : ABLE의 프로젝트 정보를 볼륨으로 연결합니다.
+`-v /var/lib/able/blocks:/app/able/v1/blocks` : 로컬 디렉토리 `/var/lib/able/blocks`를 컨테이너 내 `/app/able/v1/blocks` 경로에 마운트하여, ABLE의 블록 정보를 영구적으로 저장합니다.
+
+`-v /var/lib/able/projects:/app/able/v1/data/projects` : 로컬 디렉토리 `/var/lib/able/projects`를 컨테이너 내 `/app/able/v1/data/projects` 경로에 마운트하여, 프로젝트 정보를 영구적으로 저장합니다.

@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # 배포 API 페이지
 
-이 페이지에서는 [결과 그래프 페이지](../tutorial-analyses/train-result)에서 배포했던 API들의 목록을 확인하고, 관리할 수 있습니다.
+이 페이지에서는 [결과 그래프 페이지](../guide-analyses/train-result)에서 배포했던 API들의 목록을 확인하고, 관리할 수 있습니다.
 
 ---
 
