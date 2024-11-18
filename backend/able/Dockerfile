@@ -4,7 +4,7 @@ ENV APPLICATION_NAME=able
 ENV VERSION=v1
 
 ENV HOME=/app
-ENV PORT=8000
+ENV PORT=5000
 
 WORKDIR $HOME
 
@@ -24,4 +24,4 @@ COPY static ./static
 
 EXPOSE $PORT
 
-CMD ["uvicorn", "src.main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uvicorn", "src.main:app", "--host", "0.0.0.0", "--port", "5000"]

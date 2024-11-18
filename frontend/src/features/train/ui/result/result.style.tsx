@@ -47,14 +47,15 @@ export const GraphCard = styled.div`
   flex-direction: column;
   justify-content: start;
   align-items: center;
+  overflow: hidden;
 `;
 
 export const GraphTitle = styled.h3`
-  margin: 0.2rem 0 0.525rem 0.625rem;
+  margin: 0 0 0.5rem 0;
   margin-right: auto;
   font-size: ${Common.fontSizes.xl};
   font-weight: ${Common.fontWeights.medium};
-  color: #333;
+  color: ${Common.colors.gray500};
 `;
 
 export const F1ScoreTitle = styled(GraphTitle)`
@@ -64,6 +65,9 @@ export const F1ScoreTitle = styled(GraphTitle)`
 `;
 
 export const ConfusionImage = styled.img`
-  max-height: 12.8125rem;
-  object-fit: contain;
-` 
+  max-width: 70%; 
+  height: auto;
+  flex-grow: 1; 
+  object-fit: contain; 
+  padding: 0;
+`;

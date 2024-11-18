@@ -9,7 +9,7 @@ interface F1ScoreProps {
 const F1Score = ({ f1Score }: F1ScoreProps) => {
   const data = [
     { name: 'Score', value: f1Score },
-    { name: 'Remaining', value: 1 - f1Score },
+    { name: 'Remaining', value: 100 - f1Score },
   ];
 
   return (

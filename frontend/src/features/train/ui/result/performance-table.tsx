@@ -18,9 +18,20 @@ const PerformanceTable = ({ performanceMetrics = { accuracy: 0, top5Accuracy: 0,
     <ResponsiveContainer width="100%" height="100%">
       <BarChart data={data} layout="vertical" margin={{ top: 15, right: 25, left: 10, bottom: 0 }}>
         <CartesianGrid strokeDasharray="3 3" vertical={false} horizontal={false} />
-        <XAxis type="number" domain={[0, 100]} tick={{ fontSize: Common.fontSizes['2xs'] }} />
-        <YAxis type="category" dataKey="name" tick={{ fontSize: Common.fontSizes.xs }} />
-        <Tooltip />
+        <XAxis
+          type="number"
+          domain={[0, 100]}
+          tick={{ fontSize: Common.fontSizes['2xs'] }}
+          tickFormatter={(value) => parseFloat(value.toFixed(1)).toString()}
+        />
+        <YAxis
+          type="category"
+          dataKey="name"
+          tick={{ fontSize: Common.fontSizes.xs }}
+        />
+        <Tooltip
+          formatter={(value: number) => parseFloat(value.toFixed(1))}
+        />
         <Bar dataKey="value" fill={Common.colors.primary} barSize={25} />
       </BarChart>
     </ResponsiveContainer>

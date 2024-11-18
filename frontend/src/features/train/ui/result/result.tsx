@@ -16,8 +16,8 @@ import PerformanceTable from '@features/train/ui/result/performance-table';
 import BasicButton from '@shared/ui/button/basic-button';
 import DeployModal from '@features/train/ui/modal/deploy-modal';
 
-type LossData = { epoch: number; training: number; validation: number }[];
-type AccuracyData = { epoch: number; accuracy: number }[];
+type LossData = { epoch: string; training: number; validation: number }[];
+type AccuracyData = { epoch: string; accuracy: number }[];
 
 const transformLossData = (epochResults: EpochResult[] | null) => {
   if (!epochResults) {
@@ -25,7 +25,7 @@ const transformLossData = (epochResults: EpochResult[] | null) => {
   }
 
   return epochResults.map((item) => ({
-    epoch: parseInt(item.epoch, 10),
+    epoch: item.epoch,
     training: item.losses.training,
     validation: item.losses.validation,
   }));
@@ -37,7 +37,7 @@ const transformAccuracyData = (epochResults: EpochResult[] | null) => {
   }
 
   return epochResults.map((item) => ({
-    epoch: parseInt(item.epoch, 10),
+    epoch: item.epoch,
     accuracy: item.accuracies.accuracy,
   }));
 };
