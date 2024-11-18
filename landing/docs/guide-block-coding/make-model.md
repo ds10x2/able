@@ -94,7 +94,10 @@ sidebar_position: 2
 
 데이터에 대해 특정 연산을 수행합니다.
 
-- **Flatten**: 다차원 데이터를 1차원으로 변환합니다.
+- **TensorAdder**: 텐서들을 원소합 연산을 수행합니다.
+- **TensorStacker**: 텐서들을 새로운 차원으로 쌓는 연산을 수행합니다.
+- **TensorConcatenator**: 텐서들을 이어붙이는 연산을 수행합니다.
+- **TensorMatrixMultiplier**: 두 텐서를 행렬곱 연산을 수행합니다.
 
 #### 6. Optimizer 블록
 
