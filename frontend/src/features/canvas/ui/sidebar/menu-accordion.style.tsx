@@ -28,8 +28,7 @@ export const MenuBlockWrapper = styled.div<{
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  height: ${({ isOpen, contentHeight }) =>
-    isOpen ? `${contentHeight}px` : '0'};
+  height: ${({ isOpen, contentHeight }) => (isOpen ? `${contentHeight}px` : '0')};
   transition: height 0.3s ease;
 `;
 

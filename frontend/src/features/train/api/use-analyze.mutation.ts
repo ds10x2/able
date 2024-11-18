@@ -2,7 +2,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 import axiosInstance from '@/shared/api/config/axios-instance';
 import trainKey from '@features/train/api/train-key';
-import { FeatureMapProps, CreateFeatureMapProps } from '@features/train/types/analyze.type';
+import type { FeatureMapProps, CreateFeatureMapProps } from '@features/train/types/analyze.type';
 
 const createFeatureMap = async ({ projectName, resultName, epochName, deviceIndex, image }: CreateFeatureMapProps) => {
   try {

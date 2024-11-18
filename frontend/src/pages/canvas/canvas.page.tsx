@@ -1,4 +1,3 @@
-// src/pages/canvas/canvas-page.tsx
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import { ReactFlowProvider } from '@xyflow/react';

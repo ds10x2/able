@@ -12,7 +12,7 @@ import {
 import { v4 as uuidv4 } from 'uuid';
 import toast from 'react-hot-toast';
 
-import { BlockItem } from '@features/canvas/types/block.type';
+import type { BlockItem } from '@features/canvas/types/block.type';
 
 export const useCopyPaste = <NodeType extends Node = Node, EdgeType extends Edge = Edge>() => {
   // 현재 마우스 위치 저장 (붙여넣기 시 마우스 위치를 기준으로 노드 배치)

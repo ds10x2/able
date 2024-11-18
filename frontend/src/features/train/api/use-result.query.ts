@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import axiosInstance from '@shared/api/config/axios-instance';
 import trainKey from '@features/train/api/train-key';
 import type { GraphResponse } from '@features/train/types/analyze.type';
-import { CheckpointResponse } from '@features/train/types/result.type';
+import type { CheckpointResponse } from '@features/train/types/result.type';
 
 const fetchGraphs = async (projectName: string, resultName: string) => {
   try {
