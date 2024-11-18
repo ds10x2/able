@@ -89,8 +89,8 @@ const config: Config = {
             //   to: "/blog",
             // },
             {
-              label: "GitHub",
-              href: "#",
+              label: "DockerHub",
+              href: "https://hub.docker.com/u/aiblockeditor",
             },
           ],
         },
