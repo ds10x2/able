@@ -1,4 +1,5 @@
-#  블러
+#  ABLE
+<img width="500" src="./assets/able.gif">
 
 ## 📌 프로젝트 소개
 
@@ -48,59 +49,6 @@
 | :--------------------------------------------: |
 | <img width="225" src="./etc/asset/search.gif"> |
 
-## 🎥 숏폼 생성 과정
-
-각 언론사에 보도된 뉴스 기사를 다음과 같은 과정을 통해 숏폼 영상으로 제작하여 사용자에게 제공합니다.
-
-### 🐱‍🏍 주요 기능 흐름
-
-<img width="600" src="./etc/asset/functional-flow-chart.png">
-
-### 🕷 크롤링
-
-BeautifulSoup4 라이브러리를 활용해 각 언론사별 크롤러를 구현했습니다.
-
-<img width="600" src="./etc/asset/crawler-compare.png">
-
-### 🌐 배포 환경
-
-크롤러는 AWS Lambda 를 통한 서버리스 환경에서 동작하고 있습니다.
-
-이러한 설계는 다음과 같은 요약을 토대로 선택했습니다.
-
-<img width="600" src="./etc/asset/server-less-compare.png">
-
-### ⚙️ 프롬프트 엔지니어링
-
-관련 논문을 참고해 정확도를 61%에서 87%로 상승시킨 5가지 방법 중 3가지를 적용하여 다음 사진과 같이 작성했습니다.
-
-<img width="600" src="./etc/asset/prompt.png">
-
-### 📃 시나리오 생성
-
-기사 원문을 전달하면 프롬프트를 통해 해당 기사를 6개의 장면으로 분할하여 다음과 같은 사진과 같이 각 장면에 대한 묘사와 대사를 생성합니다.
-
-<img width="600" src="./etc/asset/scenario.png">
-
-### 🎞️ 이미지 생성
-
-프롬프팅 엔지니어링을 수행한 결과 다음 사진과 같으며, 생성한 시나리오의 **description**을 바탕으로 이미지를 생성합니다.
-
-|                     수행전                    |                      수행후                      |
-| :--------------------------------------------: | :--------------------------------------------: |
-| <img width="275" src="./etc/asset/before.png"> | <img width="290" src="./etc/asset/after.png"> |
-
-### 🎙️ 나레이션 생성
-
-생성한 시나리오의 **dialogue**을 바탕으로 나레이션을 생성합니다.
-
-<img width="600" src="./etc/asset/speech.png">
-
-### 📹 숏폼 생성
-
-위에서 도출한 이미지 배열과 나레이션을 합쳐 숏폼 영상을 생성합니다.
-
-<img width="600" src="./etc/asset/create_video.png">
 
 ## 🧑🏻 팀원
 
