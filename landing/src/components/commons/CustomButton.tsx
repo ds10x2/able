@@ -6,31 +6,23 @@ import styles from "@components/styles/CustomButton.module.css";
 type ButtonProps = {
   label: string;
   onClick?: () => void;
-  type?: "button" | "submit" | "reset";
   size?: "small" | "medium" | "large";
   variant?: "primary" | "secondary" | "outline" | "code";
-  disabled?: boolean;
 };
 
 const CustomButton: React.FC<ButtonProps> = ({
   label,
   onClick,
-  type = "button",
   size = "medium",
   variant = "primary",
-  disabled = false,
 }) => {
   return (
-    <button
-      type={type}
+    <div
       onClick={onClick}
-      className={clsx(styles.button, styles[variant], styles[size], {
-        [styles.disabled]: disabled,
-      })}
-      disabled={disabled}
+      className={clsx(styles.button, styles[variant], styles[size])}
     >
       {label}
-    </button>
+    </div>
   );
 };
 
