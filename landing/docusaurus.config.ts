@@ -90,7 +90,7 @@ const config: Config = {
             // },
             {
               label: "DockerHub",
-              href: "https://hub.docker.com/r/aiblockeditor/ai-block-editor/tags",
+              href: "https://hub.docker.com/r/aiblockeditor/able/tags",
             },
           ],
         },
