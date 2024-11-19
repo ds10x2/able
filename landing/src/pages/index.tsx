@@ -22,7 +22,7 @@ function copyToClipboard(text: string): void {
 function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext();
   const dockerCommand =
-    "docker run -d -p 5000:5000 -p 8088:8088 ai-block-editor:latest";
+    "docker run -d -p 5000:5000 -p 8088:8088 aiblockeditor/able:latest";
   return (
     <header className={clsx("hero", styles.heroBanner)}>
       <div className="container">
