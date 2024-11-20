@@ -175,16 +175,16 @@ ABLE은 **버튼 클릭만으로 FastAPI 프레임워크 기반의 서버를 실
 
 <table border="1" style="border-collapse: collapse; text-align: center; width: 100%;">
     <tr>
-      <th scope="col" colspan="4" style="text-align: center;  background-color: #ADD8E6; color: #FFF;"> Server </th>
+      <th scope="col" colspan="4" style="text-align: center; background-color: #ADD8E6; color: #FFF;"> Server </th>
       <th scope="col" colspan="2" style="text-align: center; background-color: #C6ABFF; color: #FFF;"> Client </th>
     </tr>
     <tr>
-      <td style="background-color: #ADD8E6; color: #FFF;">박근석</td>
-      <td style="background-color: #ADD8E6; color: #FFF;">박다솔</td>
-      <td style="background-color: #ADD8E6; color: #FFF;">박상후</td>
-      <td style="background-color: #ADD8E6; color: #FFF;">박찬규</td>
-      <td style="background-color: #C6ABFF; color: #FFF;">정다빈</td>
-      <td style="background-color: #C6ABFF; color: #FFF;">조민주</td>
+      <td style="text-align: center; background-color: #ADD8E6; color: #FFF;">박근석</td>
+      <td style="text-align: center; background-color: #ADD8E6; color: #FFF;">박다솔</td>
+      <td style="text-align: center; background-color: #ADD8E6; color: #FFF;">박상후</td>
+      <td style="text-align: center; background-color: #ADD8E6; color: #FFF;">박찬규</td>
+      <td style="text-align: center; background-color: #C6ABFF; color: #FFF;">정다빈</td>
+      <td style="text-align: center; background-color: #C6ABFF; color: #FFF;">조민주</td>
     </tr>
     <tr>
       <td>
