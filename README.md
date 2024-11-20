@@ -141,8 +141,8 @@ ABLE은 **버튼 클릭만으로 FastAPI 프레임워크 기반의 서버를 실
 
 ### 🖥️ Server
 
-|                 |                                                                                                                                                                                                                                            |
-| :-------------: | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|                  |                                                                                                                                                                                                                             |
+| :--------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 |    Framework    | <img src="https://img.shields.io/badge/fastapi-009688?style=for-the-badge&logo=fastapi&logoColor=white"/>                                                                                                                                  |
 |    Language     | <img src="https://img.shields.io/badge/python-3776AB.svg?style=for-the-badge&logo=python&logoColor=white"/>                                                                                                                                |
 |     DevOps      | <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=Docker&logoColor=white" alt="Docker"> <img src="https://img.shields.io/badge/jenkins-D24939?style=for-the-badge&logo=jenkins&logoColor=white" alt="jenkins"> |
@@ -168,7 +168,7 @@ ABLE은 **버튼 클릭만으로 FastAPI 프레임워크 기반의 서버를 실
 
 |                |                          |
 | :------------: | -----------------------: |
-| File Structure | <img width="700" src=""> |
+| File Structure | <img width="700" src="assets/file-structure.png"> |
 
 
 ## 🧑🏻  팀원
