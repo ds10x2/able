@@ -1,5 +1,7 @@
 import gc
 import json
+import logging
+
 from . import TrainRequest
 from src.train.schemas import TrainResultResponse, EpochResult, Loss, Accuracy
 from .utils import *
@@ -9,20 +11,21 @@ from src.utils import encode_image_to_base64
 from src.file.utils import read_image_file
 from typing import List
 
-import logging
-
 from src.train_log.utils import format_float
+from ..config import get_logger
 from ..device.schema import DeviceStatus
 from ..device.utils import get_device_status, update_device_status
 from src.file.constants import *
 
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
+import time
 
+logger = get_logger(__name__, level=logging.DEBUG)
 path_manager = PathManager()
 
 def train_in_background(request: TrainRequest):
+    logger.debug("학습 시작[epoch: %s, batch size: %s]", request.epoch, request.batch_size)
     train(request)
+    logger.debug("학습 종료")
 
 def train(request: TrainRequest):
 
@@ -104,15 +107,15 @@ def train(request: TrainRequest):
     train_logger = TrainLogger(project_name, result_name)
 
     try:
+
         trainer = Trainer(model, dataset, criterion, optimizer, request.batch_size, train_logger, device=device)
 
-        logger.info("학습 시작")
         trainer.train(request.epoch)
-        logger.info("학습 종료")
 
-        logger.info("테스트 시작")
+        logger.debug("테스트 시작")
         trainer.test()
-        logger.info("테스트 종료")
+        logger.debug("테스트 종료")
+
         train_logger.update_status(TrainStatus.COMPLETE)
     except Exception as e:
         train_logger.update_status(TrainStatus.FAIL)

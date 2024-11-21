@@ -1,15 +1,14 @@
 import logging
 
 from src.checkpoints.schemas import CheckpointListResponse, CheckpointsPaginatedResponse
+from src.config import get_logger
 from src.file.path_manager import PathManager
 from src.file.utils import get_directory
 from src.file.constants import *
 from src.utils import handle_pagination, has_next_page
 from src.checkpoints.utils import sort_checkpoints, get_checkpoints
 
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
-
+logger = get_logger(__name__)
 pathManager = PathManager()
 
 def get_all_checkpoints(project_name: str, result_name: str) -> CheckpointListResponse:

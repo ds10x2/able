@@ -1,3 +1,4 @@
+import logging
 from pathlib import Path
 
 import uvicorn
@@ -83,4 +84,4 @@ async def base_custom_exception_handler(request: Request, exc: BaseCustomExcepti
     )
 
 if __name__ == "__main__":
-    uvicorn.run("main:app", port=5000, log_level="info", workers=3)
+    uvicorn.run("main:app", port=5000, workers=3)

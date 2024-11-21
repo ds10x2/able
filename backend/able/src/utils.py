@@ -1,13 +1,11 @@
 import json
 from typing import Any, Dict, List
 from pydantic import BaseModel
-import logging
 import base64
-import re
 
-from src.file.exceptions import FileNotFoundException
+from src.config import get_logger
 
-logger = logging.getLogger(__name__)
+logger = get_logger(__name__)
 
 def str_to_json(data: str) -> Dict[str, Any]:
 

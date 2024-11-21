@@ -1,5 +1,4 @@
 import asyncio
-import logging
 from contextlib import asynccontextmanager
 
 from pathlib import Path
@@ -55,6 +54,13 @@ if log_file_path.exists():
         f.truncate(0)
 
 app = FastAPI(lifespan=lifespan)
+
+
+
+
+
+
+
 
 pass
 

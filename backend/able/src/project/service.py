@@ -1,7 +1,7 @@
-from math import ceil
 from typing import List, Optional
 import logging
 
+from src.config import get_logger
 from src.project.schemas import Project, SelectedProject, UpdatedProject
 from src.file.utils import create_directory, get_directory, delete_directory, create_file, get_file, rename_path, read_image_file
 from src.file.path_manager import PathManager
@@ -11,9 +11,7 @@ from src.file.exceptions import FileNotFoundException
 from src.canvas.schemas import Canvas
 from src.file.constants import *
 
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
-
+logger = get_logger(__name__, level=logging.DEBUG)
 path_manager = PathManager()
 
 def create_project(project: Project) -> bool:

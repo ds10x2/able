@@ -1,21 +1,16 @@
 import logging
 
-from pathlib import Path
-from typing import List, Optional
 from fastapi import UploadFile
-
+from src.config import get_logger
 from src.file.path_manager import PathManager
-from src.file.utils import get_directory, read_image_file, save_img, create_directory, get_file
-from src.utils import encode_image_to_base64, str_to_json, handle_pagination, has_next_page
-from src.analysis.utils import FeatureMapExtractor, read_blocks, load_model
-from src.train.utils import split_blocks
+from src.file.utils import read_image_file, save_img, create_directory, get_file
+from src.utils import encode_image_to_base64, str_to_json
+from src.analysis.utils import FeatureMapExtractor, load_model
 from src.canvas.schemas import Canvas
 from src.analysis.schemas import *
 from src.file.constants import *
 
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
-
+logger = get_logger(__name__, level=logging.DEBUG)
 pathManager = PathManager()
 
 

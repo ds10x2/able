@@ -3,11 +3,12 @@ import logging
 from src.block.enums import BlockType
 from src.block.exceptions import BlockNotFoundException
 from src.block.schemas import Block
+from src.config import get_logger
 from src.file.utils import get_file, get_directory
 from src.file.path_manager import PathManager
 from src.utils import str_to_json
 
-logger = logging.getLogger(__name__)
+logger = get_logger(__name__, level=logging.DEBUG)
 path_manager = PathManager()
 
 def find_blocks_by_type(block_type: BlockType) -> list[Block]:

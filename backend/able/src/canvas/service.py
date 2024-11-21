@@ -1,11 +1,12 @@
 import logging
 from src.canvas.schemas import SaveCanvasRequest, Canvas
+from src.config import get_logger
 from src.file.utils import get_file, create_file, save_img_from_base64
 from src.file.path_manager import PathManager
 from src.utils import str_to_json, json_to_str
 from src.file.constants import *
 
-logger = logging.getLogger(__name__)
+logger = get_logger(__name__, level=logging.DEBUG)
 path_manager = PathManager()
 
 def get_canvas(

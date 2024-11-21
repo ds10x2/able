@@ -1,22 +1,23 @@
-import shutil
 import logging
+import shutil
 import io
 import base64
 from pathlib import Path
 from typing import List
 from PIL import Image
 from fastapi import UploadFile
+
+from src.config import get_logger
 from src.file.exceptions import FileNotFoundException, FileUnreadableException, ImageSaveFailException, DirectoryCreationException, DirectoryUpdateException
 
 
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
+logger = get_logger(__name__, level=logging.DEBUG)
 
 def create_directory(path: Path) -> bool:
     if not path.exists():
         try:
             path.mkdir(parents=True)
-            logger.info(f"디렉터리 생성 성공: {path}")
+            logger.debug(f"디렉터리 생성 성공: {path}")
             return True
         except PermissionError:
             logger.error("디렉터리를 생성할 권한이 없음")
@@ -35,7 +36,7 @@ def delete_directory(path: Path) -> bool:
     if path.exists() and path.is_dir():
         try:
             shutil.rmtree(path)
-            logger.info(f"디렉터리 삭제 성공: {path}")
+            logger.debug(f"디렉터리 삭제 성공: {path}")
             return True
         except Exception as e:
             logger.error(f"디렉터리 삭제 실패: {e}", exc_info=True)
@@ -49,7 +50,7 @@ def create_file(path: Path, data: str) -> bool:
     try:
         with path.open("w", encoding="utf-8") as f:
             f.write(data)
-        logger.info(f"파일 저장 성공: {path}")
+        logger.debug(f"파일 저장 성공: {path}")
         return True
     except TypeError as e:
         logger.error(f"파일 저장 실패: {e}", exc_info=True)
@@ -83,7 +84,7 @@ def remove_file(path: Path) -> bool:
     if path.exists() and path.is_file():
         try:
             path.unlink()
-            logger.info(f"파일 삭제 성공: {path}")
+            logger.debug(f"파일 삭제 성공: {path}")
             return True
         except Exception as e:
             logger.error(f"파일 삭제 실패: {e}", exc_info=True)
@@ -98,7 +99,7 @@ def rename_path(path: Path, new_name: str) -> bool:
         new_path = path.parent / new_name
         try:
             path.rename(new_path)
-            logger.info(f"이름 변경 성공: {path} -> {new_path}")
+            logger.debug(f"이름 변경 성공: {path} -> {new_path}")
             return True
         except Exception as e:
             logger.error(f"이름 변경 실패: {e}", exc_info=True)
@@ -118,7 +119,7 @@ async def save_img(path: Path, file_name: str, file: UploadFile) -> Path:
             content = await file.read()
             image_file.write(content)
             
-        logger.info(f"이미지 저장 성공: {img_path}")
+        logger.debug(f"이미지 저장 성공: {img_path}")
 
     except Exception as e:
         logger.error(f"이미지 저장 실패: {img_path}",exc_info=True)
@@ -137,7 +138,7 @@ def save_img_from_base64(path: Path, file_name: str, base64_str: str) -> Path:
         with open(img_path, "wb") as image_file:
             image_file.write(image_data)
         
-        logger.info(f"이미지 저장 성공: {img_path}")
+        logger.debug(f"이미지 저장 성공: {img_path}")
         
     except Exception as e:
         logger.error(f"이미지 저장 실패: {img_path}", exc_info=True)
