@@ -17,7 +17,7 @@ ABLE을 사용하기 위해서는 Docker 설치가 필요합니다. [Docker 공�
 최신 버전의 **Docker**가 설치되어 있는지 확인한 다음 명령줄에 다음 명령을 실행합니다.
 
 ```bash
-docker pull ai-block-editor:latest
+docker pull aiblockeditor/able:latest
 ```
 
 현재 ABLE의 최신버전은 1.0.0 입니다.
@@ -34,7 +34,7 @@ docker run -d \
     -e TZ=Asia/Seoul \
     -e PYTHONPATH=/app \
     --gpus all \
-    ai-block-editor
+    aiblockeditor/able
 
 ```
 
