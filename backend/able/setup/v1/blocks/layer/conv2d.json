@@ -1,0 +1,54 @@
+{
+    "name": "conv2d",
+    "type": "layer",
+    "args": [
+        {
+            "name": "in_channels",
+            "value": 3,
+            "type": "int",
+            "is_required": true
+        },
+        {
+            "name": "out_channels",
+            "value": 64,
+            "type": "int",
+            "is_required": true
+        },
+        {
+            "name": "kernel_size",
+            "value": 3,
+            "type": "int",
+            "is_required": true
+        },
+        {
+            "name": "stride",
+            "value": 1,
+            "type": "int",
+            "is_required": false
+        },
+        {
+            "name": "padding",
+            "value": 0,
+            "type": "int",
+            "is_required": false
+        },
+        {
+            "name": "dilation",
+            "value": 1,
+            "type": "int",
+            "is_required": false
+        },
+        {
+            "name": "groups",
+            "value": 1,
+            "type": "int",
+            "is_required": false
+        },
+        {
+            "name": "bias",
+            "value": true,
+            "type": "bool",
+            "is_required": false
+        }
+    ]
+}

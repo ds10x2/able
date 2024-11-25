@@ -1,0 +1,18 @@
+{
+    "name": "flatten",
+    "type": "layer",
+    "args": [
+        {
+            "name": "start_dim",
+            "value": 1,
+            "type": "int",
+            "is_required": false
+        },
+        {
+            "name": "end_dim",
+            "value": -1,
+            "type": "int",
+            "is_required": false
+        }
+    ]
+}

@@ -1,0 +1,24 @@
+{
+    "name": "linear",
+    "type": "layer",
+    "args": [
+        {
+            "name": "in_features",
+            "value": 128,
+            "type": "int",
+            "is_required": true
+        },
+        {
+            "name": "out_features",
+            "value": 64,
+            "type": "int",
+            "is_required": true
+        },
+        {
+            "name": "bias",
+            "value": true,
+            "type": "bool",
+            "is_required": false
+        }
+    ]
+}

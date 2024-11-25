@@ -1,0 +1,17 @@
+{
+  "extends": "@docusaurus/tsconfig",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@site/*": ["./*"],
+      "@/*": ["src/*"],
+      "@app/*": ["src/app/*"],
+      "@assets/*": ["src/assets/*"],
+      "@pages/*": ["src/pages/*"],
+      "@images/*": ["src/img/*"],
+      "@font/*": ["src/font/*"],
+      "@components/*": ["src/components/*"],
+      "@styles/*": ["src/components/styles/*"]
+    }
+  }
+}

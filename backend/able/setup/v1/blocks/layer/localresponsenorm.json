@@ -1,0 +1,30 @@
+{
+    "name": "localresponsenorm",
+    "type": "layer",
+    "args": [
+        {
+            "name": "size",
+            "value": 5,
+            "type": "int",
+            "is_required": true
+        },
+        {
+            "name": "alpha",
+            "value": 0.0001,
+            "type": "float",
+            "is_required": false
+        },
+        {
+            "name": "beta",
+            "value": 0.75,
+            "type": "float",
+            "is_required": false
+        },
+        {
+            "name": "k",
+            "value": 1.0,
+            "type": "float",
+            "is_required": false
+        }
+    ]
+}

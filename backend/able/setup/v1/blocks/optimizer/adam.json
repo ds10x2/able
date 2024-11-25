@@ -1,0 +1,30 @@
+{
+    "name": "adam",
+    "type": "optimizer",
+    "args": [
+        {
+            "name": "lr",
+            "value": 0.001,
+            "type": "float",
+            "is_required": false
+        },
+        {
+            "name": "eps",
+            "value": 1e-8,
+            "type": "float",
+            "is_required": false
+        },
+        {
+            "name": "weight_decay",
+            "value": 0,
+            "type": "float",
+            "is_required": false
+        },
+        {
+            "name": "amsgrad",
+            "value": false,
+            "type": "bool",
+            "is_required": false
+        }
+    ]
+}

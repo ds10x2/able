@@ -1,0 +1,53 @@
+/* src/components/CustomButton.module.css */
+
+.button {
+  font-family: inherit;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  margin: 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button.primary {
+  background-color: var(--ifm-color-primary);
+  color: white;
+}
+
+.button.secondary {
+  background-color: var(--ifm-color-secondary);
+  color: white;
+}
+
+.button.outline {
+  background-color: transparent;
+  border: 2px solid var(--ifm-color-primary);
+  color: var(--ifm-color-primary);
+}
+
+.button.code {
+  background-color: var(--docusaurus-highlighted-code-line-bg);
+  color: var(--ifm-code-font-color);
+}
+
+.button.small {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+}
+
+.button.medium {
+  font-size: 1rem;
+  padding: 0.7rem 1.6rem;
+}
+
+.button.large {
+  font-size: 1.25rem;
+  padding: 0.75rem 1.25rem;
+}
+
+.button.disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
