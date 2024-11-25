@@ -1,0 +1,42 @@
+{
+    "name": "maxpool2d",
+    "type": "layer",
+    "args": [
+        {
+            "name": "kernel_size",
+            "value": 2,
+            "type": "int",
+            "is_required": true
+        },
+        {
+            "name": "stride",
+            "value": 2,
+            "type": "int",
+            "is_required": false
+        },
+        {
+            "name": "padding",
+            "value": 0,
+            "type": "int",
+            "is_required": false
+        },
+        {
+            "name": "dilation",
+            "value": 1,
+            "type": "int",
+            "is_required": false
+        },
+        {
+            "name": "return_indices",
+            "value": false,
+            "type": "bool",
+            "is_required": false
+        },
+        {
+            "name": "ceil_mode",
+            "value": false,
+            "type": "bool",
+            "is_required": false
+        }
+    ]
+}

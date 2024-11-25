@@ -1,0 +1,36 @@
+{
+    "name": "batchnorm2d",
+    "type": "layer",
+    "args": [
+        {
+            "name": "num_features",
+            "value": 64,
+            "type": "int",
+            "is_required": true
+        },
+        {
+            "name": "eps",
+            "value": 1e-5,
+            "type": "float",
+            "is_required": false
+        },
+        {
+            "name": "momentum",
+            "value": 0.1,
+            "type": "float",
+            "is_required": false
+        },
+        {
+            "name": "affine",
+            "value": true,
+            "type": "bool",
+            "is_required": false
+        },
+        {
+            "name": "track_running_stats",
+            "value": true,
+            "type": "bool",
+            "is_required": false
+        }
+    ]
+}

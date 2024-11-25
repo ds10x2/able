@@ -1,0 +1,12 @@
+{
+    "name": "resize",
+    "type": "transform",
+    "args": [
+        {
+            "name": "size",
+            "value": null,
+            "type": "list_int",
+            "is_required": true
+        }
+    ]
+}

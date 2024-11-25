@@ -1,0 +1,36 @@
+{
+    "name": "sgd",
+    "type": "optimizer",
+    "args": [
+        {
+            "name": "lr",
+            "value": 0.01,
+            "type": "float",
+            "is_required": true
+        },
+        {
+            "name": "momentum",
+            "value": 0,
+            "type": "float",
+            "is_required": false
+        },
+        {
+            "name": "dampening",
+            "value": 0,
+            "type": "float",
+            "is_required": false
+        },
+        {
+            "name": "weight_decay",
+            "value": 0,
+            "type": "float",
+            "is_required": false
+        },
+        {
+            "name": "nesterov",
+            "value": false,
+            "type": "bool",
+            "is_required": false
+        }
+    ]
+}

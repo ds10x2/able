@@ -1,0 +1,12 @@
+{
+    "name": "relu",
+    "type": "activation",
+    "args": [
+        {
+            "name": "inplace",
+            "value": false,
+            "type": "bool",
+            "is_required": false
+        }
+    ]
+}
