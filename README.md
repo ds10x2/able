@@ -6,8 +6,6 @@
 
 <div align=center>
 
-### SSAFY 11기 2학기 자율 프로젝트
-
 2024.10.14(월) ~ 2024.11.19(화) [5주]
 
 <a href="https://youtu.be/ZJ3sram0qzk">
